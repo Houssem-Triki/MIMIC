@@ -9,15 +9,15 @@ The fundamental assumption of the coupling is that each model operates and evalu
 ## Software and Dependencies of MIMIC
 In order to use this tool, you need to download Julia REPL v 1.8.5 at least. [Julia download link](https://julialang.org/downloads/)
 MIMIC's depend on the following packages:
-- YAML (write Pkg.add("YAML") in Julia's REPL)
-- OrderedCollections (write Pkg.add("OrderedCollections") in Julia's REPL)
-- TimerOutputs (write Pkg.add("TimerOutputs") in Julia's REPL)
+- YAML (write `Pkg.add("YAML")` in Julia's REPL)
+- OrderedCollections (`Pkg.add("OrderedCollections")`)
+- TimerOutputs (`Pkg.add("TimerOutputs")`)
 
 ## Dependencies of MIMIC interaction exemple
 The following packages are needed to run the exemple of the interaction:
-- CSV (Pkg.add("CSV"))
-- DataFrames (Pkg.add("DataFrames"))
-- Interpolations (Pkg.add("Interpolations"))
+- CSV (`Pkg.add("CSV")`)
+- DataFrames (`Pkg.add("DataFrames")`)
+- Interpolations (`Pkg.add("Interpolations")`)
 
 ## Installation of MIMIC.jl
 You can download the directory "MIMIC_tool" directly in your working folder.
