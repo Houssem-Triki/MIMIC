@@ -66,40 +66,6 @@ end
 
 #----------------------------------------------------------------------------------------------------------
 
-#--- Update Fruit's Cohorts
-# AR and AG can be replaced by last fruitsofinterest.attacked 
-# function MIMIC_system_stats_to_Plant(fruitsCohorts, AR, AG, day)
-#     while AR > 0 && AG > 0
-#         for i in eachindex(fruitsCohorts)
-#             # Red attack
-#             if AR > 0 
-#                 if fruitsCohorts[i].State == false && fruitsCohorts[i].ChronologicalAge >= 196 && fruitsCohorts[i].NumberOfOrgans <= AR 
-#                     fruitsCohorts[i].State = true
-#                     AR -=  fruitsCohorts[i].NumberOfOrgans
-#                     fruitsCohorts[i].DateOfColonisation = day
-#                 elseif fruitsCohorts[i].State == false && fruitsCohorts[i].ChronologicalAge > 196  && fruitsCohorts[i].NumberOfOrgans > AR
-#                     fruitsCohorts[i].NumberOfOrgans -= AR
-#                     push!(fruitsCohorts, FruitsCohorts(AR, fruitsCohorts[i].ChronologicalAge, true, day))
-#                 end
-#             end
-#             # Green Attack
-#             if AG > 0
-#                 if fruitsCohorts[i].State == false && fruitsCohorts[i].ChronologicalAge >= 105  && fruitsCohorts[i].ChronologicalAge < 196 && fruitsCohorts[i].NumberOfOrgans <= AG
-#                     fruitsCohorts[i].State = true
-#                     AG -=  fruitsCohorts[i].NumberOfOrgans
-#                     fruitsCohorts[i].DateOfColonisation = day
-#                 elseif fruitsCohorts[i].State == false && fruitsCohorts[i].ChronologicalAge > 105 && fruitsCohorts[i].ChronologicalAge < 196 && fruitsCohorts[i].NumberOfOrgans > AG
-#                     fruitsCohorts[i].NumberOfOrgans -= AG
-#                     push!(fruitsCohorts, FruitsCohorts(AG, fruitsCohorts[i].ChronologicalAge, true, day))
-#                 end
-#             end
-#         end
-#         break
-#     end
-#     return fruitsCohorts
-# end
-
-
 
 
 
