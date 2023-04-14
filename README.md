@@ -26,7 +26,7 @@ You can download the directory "MIMIC_tool" directly in your working folder.
 Interactions in MIMIC are generated from the users’ instructions, covering the following two aspects: 1) the interaction code itself written by the user and so called UIM (User interaction Model) 2) the control of the simulation so called UC (User simulation control). 
 This mean that you only need to edit the two files "MIMIC_UIM.jl" and "MIMIC_UC.yml" for coupling your models. 
 
-## proceding the simulation
+## Proceding with the simulation
 
 In Julia's REPL, you need to change the directory with the command `cd(path)` to the directory of MIMIC.jl. Afterwords, you need to use the following command `include("MIMIC.jl")`. This will allows to initialise MIMIC in order to use the functions that it offers.
 
