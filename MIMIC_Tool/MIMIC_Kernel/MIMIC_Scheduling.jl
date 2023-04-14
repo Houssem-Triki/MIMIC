@@ -7,7 +7,7 @@
 # Co authors: Marc Jaeger, Fabienne Rebeyre
 # Created: June 2022
 ##############################################################
-# include("./MIMIC_Mediator.jl")
+## MIMIC_Sceduling code, creates the list of executable taskes and manages the listing, order and execution. It is connected to the mediator
 
 Schedul_status_values = ["Not Scheduled", "Ready", "In Queue", "Completed"]
 mutable struct Tasks_Desk
@@ -94,4 +94,3 @@ function TaskExecution(Time_cycle, Scheduled_tasks_List)
     end
     return Scheduled_tasks_List
 end
-# ScheduledTasklist

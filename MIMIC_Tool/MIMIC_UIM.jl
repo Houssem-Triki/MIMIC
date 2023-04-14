@@ -10,7 +10,6 @@
 #----------------------------------------------------------------------------------------------------------
 function MIMIC_system_stats(fruitsCohorts, fruitsOfInterest, AR, AG, day)
     #--- Fruit management           (cohort managment - Translation : fruitsCohorts ---> fruitsOInterest)
-    # Cohorts Aging by the steptime + Convert plant Cohorts to Scolyte-fruits groupe 
     while AR > 0 && AG > 0
         for i in eachindex(fruitsCohorts)
             # Red attack
@@ -44,7 +43,6 @@ function MIMIC_system_stats(fruitsCohorts, fruitsOfInterest, AR, AG, day)
     FruitsGH = 0 ;
     FruitsGA = 0 ;
     for i in eachindex(fruitsCohorts)
-        # fruitsCohorts[i].ChronologicalAge += 1 ;
         if fruitsCohorts[i].State == false && fruitsCohorts[i].ChronologicalAge >= 196
             FruitsRH += fruitsCohorts[i].NumberOfOrgans
         elseif fruitsCohorts[i].State == true && fruitsCohorts[i].ChronologicalAge >= 196
@@ -65,9 +63,3 @@ function MIMIC_system_stats(fruitsCohorts, fruitsOfInterest, AR, AG, day)
 end
 
 #----------------------------------------------------------------------------------------------------------
-
-
-
-
-
-

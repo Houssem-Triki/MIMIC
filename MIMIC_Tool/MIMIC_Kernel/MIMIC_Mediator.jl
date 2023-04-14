@@ -7,10 +7,8 @@
 # Co authors: Marc Jaeger, Fabienne Rebeyre
 # Created: June 2022
 ##############################################################
-# Getting the parsed and organized data
+## The models and components structure are created and initialised in MIMIC_mediatore
 
-# @timeit to "DataParsing" 
-include(Directory_DataSelection);
 #------------------------------------------------------------------------------------
 #-------------------------------------Mediator---------------------------------------
 #------------------------------------------------------------------------------------
@@ -300,8 +298,6 @@ function updateUIM()
     end
 end
 
-
-
 if UIMparsing[1].CallSynthax !== nothing
     CompMIMIC_ISS.NameOfComponent = "Ineteraction State System"
     CompMIMIC_ISS.Arguments = UIMparsing[1].Arguments
@@ -312,5 +308,3 @@ if UIMparsing[1].CallSynthax !== nothing
     include(CompMIMIC_ISS.PathFile)
 end
 
-# @timeit to "Scheduling" 
-include(Directory_Scheduling)

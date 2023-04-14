@@ -35,7 +35,7 @@ variablesModels = []
 
 mutable struct FunctionModels
     NameOfModel::String
-    CallSynthax::Any     # Solution du pauvre
+    CallSynthax::Any     
     Arguments::Any
     IsFile::Any
 end
@@ -54,7 +54,7 @@ performancesModels = []
 
 mutable struct UIMParsing
     Name::String
-    CallSynthax::Any     # Solution du pauvre
+    CallSynthax::Any    
     Arguments::Any
     IsFile::Any
     PathToFile::Any
@@ -63,18 +63,16 @@ UIMparsing = []
 #-------------------------------------------------------------------------------------------------------------------------------------
 #------ Counting active models and creating variables for models ------
 a = [] # First key of the input.yml groups
-name = [] # the name given to 
+name = [] # the name given to models
 for (key,value) in data
-    # println(data["$key"]["is_model_active"])
     if data["$key"]["Is_model_active"] == true
         @eval $(Symbol("$key")) = nothing
         if get(data["$key"], "Name", "NoValue") !== nothing
             push!(name, data["$key"]["Name"])
         elseif get(data["$key"], "Name", "NoValue") === nothing
             push!(name, "$key")
-            # println("$key")
         end
-        push!(a, "$key") # A CHANGER
+        push!(a, "$key") 
     end
     name
 end
@@ -112,9 +110,6 @@ for i in eachindex(a)
         push!(performancesModels, PerformancesModels(name[i], (false)))
     end
 end
-
-
-(@eval $(Symbol("variables_$(name[1])"))["Myrefdir"])
 
 #------------------------------------------------------------------------------------
 #----------------------------------Initialisation------------------------------------

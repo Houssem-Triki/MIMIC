@@ -7,19 +7,18 @@
 # Co authors: Marc Jaeger, Fabienne Rebeyre
 # Created: June 2022
 ##############################################################
-# In this file, all the components are initialised + every âckage can be added here for an execution
-# @timeit to "pseudo models construction" 
+# In this file, all the components are initialised + every pâckage can be added here for an execution
 using TimerOutputs
 # using Plots
 # gr(size = (750, 565))
 # theme(:default)
-Directory_UC = Directory_Main * "/MIMIC_UC.yml"
-Directory_Kernel = @__DIR__ 
-Directory_DataSelection = Directory_Kernel * "/MIMIC_data_selection.jl"
-Directory_Scheduling = Directory_Kernel * "/MIMIC_Scheduling.jl"
+Directory_UC = Directory_Main * "/MIMIC_UC.yml";
+Directory_Kernel = @__DIR__ ;
+include(Directory_Kernel * "/MIMIC_data_selection.jl");
 include(Directory_Kernel * "/MIMIC_Mediator.jl");
 include(Directory_Kernel * "/MIMIC_Scheduling.jl");
 include(Directory_Kernel * "/MIMIC_Results.jl");
+
 (platformFruitsCohorts, validationFruits) = FruitInitialisation(Model_Coffee_tree.Arguments);
 
 println("  ")

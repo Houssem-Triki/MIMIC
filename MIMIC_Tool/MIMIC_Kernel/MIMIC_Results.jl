@@ -9,8 +9,6 @@
 ##############################################################
 ### MIMIC_Results.jl is the results satup code of the interaction platform
 
-
-
 function resul(HarvestHealthy, validationFruits, HarvestColonized, GreenHealthy, GreenColonized)
     HH = []
     HC = [] 
@@ -36,8 +34,6 @@ function resul(HarvestHealthy, validationFruits, HarvestColonized, GreenHealthy,
     
     df = DataFrame(Day = HH[:,1], Measured_healthy_fruits = HH[:,2], Simulation_healthy = HH[:,3], Measured_Colonized_fruits = HC[:,2], Simulation_Colonized = HC[:,3], Measured_Healthy_Green = GH[:,2], Simulation_Healthy_Green = GH[:,3], Measured_Colonized_Green = GC[:,2], Simulation_Colonized_Green = GC[:,3])
     CSV.write("D:/Thèse/Results\\Test_C52.csv", df ,delim=';')
-    
-
 end
 
 
