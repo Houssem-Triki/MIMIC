@@ -9,12 +9,6 @@
 ##############################################################
 ### MIMIC.jl is the main code for the interaction platform
 #----------------------------------------------------------------------------------------------------------
-# using TimerOutputs
-# const to = TimerOutput();
-# @timeit to "Initialisation" 
-# Directory = @__DIR__
-# File = @__FILE__
-# include(File)
 
 Directory_Main = @__DIR__
 
@@ -40,10 +34,6 @@ function MIMICmain(Scheduled_tasks_List)
     printstyled("============================"; color = :yellow)
     println("  ")
 end
-
-MIMICinit()
-
-MIMICmain(Scheduled_tasks_List)
 
 
 println("   ")
