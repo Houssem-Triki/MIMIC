@@ -23,7 +23,7 @@ The following packages are needed to run the example of the interaction:
 ## Installation of MIMIC.jl
 You can download the directory "MIMIC_tool" directly in your working folder.
 
-## How to use:
+## How to use
 Interactions in MIMIC are generated from the users’ instructions, covering the following two aspects: 1) the interaction code itself written by the user and so called UIM (User interaction Model) 2) the control of the simulation so called UC (User simulation control). 
 This mean that you only need to edit the two files "MIMIC_UIM.jl" and "MIMIC_UC.yml" for coupling your models. (you can use a simple text editor or download a code editor like VScode, with the Julia addon [following this tutorial](https://code.visualstudio.com/docs/languages/julia) )
 
