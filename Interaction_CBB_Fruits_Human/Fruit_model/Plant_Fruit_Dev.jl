@@ -26,18 +26,19 @@ sumatraFruits = []
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 function FruitInitialisation(Tree_File)
+    
+    # Field data
+    SumatraFruits = CSV.read(Tree_File, DataFrame);
+    #Fruits
+    StudiedFruits = SumatraFruits[1:end,:]
+    sumatraFruits = Matrix(StudiedFruits)
     if Threads.atomic_xchg!(isfirstinitialisation.fruitinit, false)
-        # Field data
-        SumatraFruits = CSV.read(Tree_File, DataFrame);
-        #Fruits
-        StudiedFruits = SumatraFruits[1:end,:]
-        sumatraFruits = Matrix(StudiedFruits)
         fruitsCohorts = FruitsCohortcreation(sumatraFruits)
-        validationFruits = ValidationData(Tree_File)
-        return fruitsCohorts, sumatraFruits, validationFruits
+        # validationFruits = ValidationData(Tree_File)
     else
-        CohortsAging()
+        fruitsCohorts = CohortsAging()
     end
+    return fruitsCohorts, sumatraFruits
 end
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------

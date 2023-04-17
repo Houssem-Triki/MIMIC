@@ -17,8 +17,9 @@ include(Directory_CBB * "/CBB_Comp.jl")
 AR = 0;
 AG = 0;
 #----------- for stand alone execution 
-@__DIR__
-function CBB(day, environement)
+
+
+function CBB(day)
     if day == 1
         for i in eachindex(fruitsCohorts)
             if fruitsCohorts[i].State == true

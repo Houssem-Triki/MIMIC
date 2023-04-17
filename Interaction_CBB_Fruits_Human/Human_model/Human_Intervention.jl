@@ -8,19 +8,26 @@
 # Created: June 2022
 ##############################################################
 ### Human harvest model
+# using DataFrames
+# using CSV
+
 HarvestHealthy = []
 HarvestColonized = []
 GreenHealthy = []
 GreenColonized = []
 
-function Human_Intervention_Harvest(fruitsCohorts, hday, validationFruits)
+function Human_Intervention_Harvest(fruitsCohorts, hday, sumatraFruits)
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
+    # SumatraFruits = CSV.read(Tree_File, DataFrame);
+    # #Fruits
+    # StudiedFruits = SumatraFruits[1:end,:]
+    # sumatraFruits = Matrix(StudiedFruits)
     #--- Harvest
     TotHarvestHealthy = 0 ;
     TotHarvestColonized = 0 ;
     TotHarvestHealthyG = 0 ;
     TotHarvestColonizedG = 0 ;
-    if  any(x->x == hday, validationFruits[:,1])
+    if  any(x->x == hday, sumatraFruits[:,1])
         for i in eachindex(fruitsCohorts)
             if fruitsCohorts[i].ChronologicalAge >= 196 && fruitsCohorts[i].State == false && fruitsCohorts[i].NumberOfOrgans > 0
                 TotHarvestHealthy += fruitsCohorts[i].NumberOfOrgans 
