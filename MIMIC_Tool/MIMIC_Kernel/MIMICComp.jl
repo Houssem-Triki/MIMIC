@@ -8,6 +8,7 @@
 # Created: June 2022
 ##############################################################
 # In this file, all the components are initialised + every pâckage can be added here for an execution
+using Dates
 using TimerOutputs
 # using Plots
 # gr(size = (750, 565))
@@ -19,7 +20,7 @@ include(Directory_Kernel * "/MIMIC_Mediator.jl");
 include(Directory_Kernel * "/MIMIC_Scheduling.jl");
 include(Directory_Kernel * "/MIMIC_Results.jl");
 
-(platformFruitsCohorts, validationFruits) = FruitInitialisation(Model_Coffee_tree.Arguments);
+# (platformFruitsCohorts, validationFruits) = FruitInitialisation(Model_Coffee_tree.Arguments);
 
 println("  ")
 println("Initialisation completed")

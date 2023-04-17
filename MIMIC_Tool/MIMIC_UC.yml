@@ -22,7 +22,7 @@ UserModel:
     End_Simulation: 355
     Step_offset: 1
   Variables:
-    State_variables: [fruitsCohorts, AG, AR]
+    State_variables: [fruitsCohorts]
     Inputs: []
     Myrefdir: D:/Mes Donnees/Julia/MIMIC/MIMIC.jl
     Outputs: [fruitsCohorts]
@@ -58,7 +58,7 @@ Model1:
       Arguments: 
       File: 
 
-#------------------------------------------------ CBB ---------------------------------------------------------
+#------------------------------------------------ Tree ---------------------------------------------------------
 Model2:
   Is_model_active: true
   Name: Coffee_tree
@@ -75,7 +75,7 @@ Model2:
     State_variables: [fruitsCohorts]
     Inputs: D:/Mes Donnees/Julia/Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
     Myrefdir: D:/Mes Donnees/Julia/cbb_model/Plant_fruits
-    Outputs: [fruitsCohorts]
+    Outputs: [fruitsCohorts, validationFruits]
   Function: 
     Call: FruitInitialisation
     Arguments: D:/Mes Donnees/Julia/Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
@@ -83,7 +83,7 @@ Model2:
 # Type
  
 
-#------------------------------------------------- Plant ---------------------------------------------------------
+#------------------------------------------------- CBB ---------------------------------------------------------
 Model3: 
   Is_model_active: true
   Name: CBB
@@ -108,7 +108,6 @@ Model3:
 
 #------------------------------------------------ Human -----------------------------------------------------------
 
-
 Model4: 
   Is_model_active: true
   Name: Human
@@ -123,12 +122,12 @@ Model4:
     Step_offset: 1
   Variables:
     State_variables: [fruitsCohorts, HarvestHealthy; HarvestColonized; GreenHealthy; GreenColonized]
-    Inputs: [fruitsCohorts, Simulation_Time,  validationFruits]
+    Inputs: [fruitsCohorts, Simulation_Time,  sumatraFruits]
     Myrefdir:
     Outputs: [fruitsCohorts, HarvestHealthy; HarvestColonized; GreenHealthy; GreenColonized]
   Function:
     Call: Human_Intervention_Harvest
-    Arguments: fruitsCohorts, Day,  validationFruits
+    Arguments: fruitsCohorts, Day,  sumatraFruits
     File: false
 
 #-----------------------------------------------------------------------------------------------------------------

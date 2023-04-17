@@ -11,9 +11,10 @@
 #----------------------------------------------------------------------------------------------------------
 Directory_Main = @__DIR__
 #= Initialisation of MIMIC coupling
-    Data provided by the user (UC & UIM) are treated and used to initialise the coupling.
-    the initialisation results in an ordered list of the tasks to be executed
+Data provided by the user (UC & UIM) are treated and used to initialise the coupling.
+the initialisation results in an ordered list of the tasks to be executed
 =#
+
 function MIMICinit()
     include(Directory_Main * "/MIMIC_Kernel/MIMICComp.jl");
 end
@@ -21,29 +22,35 @@ end
 #= Main function of MIMIC coupling
     Scheduled_tasks_List: results from the initialisation (MIMICinit), it holds the liste and order of executing the tasks
 =#
+
 function MIMICmain(Scheduled_tasks_List)
-    while Simulation_Time != End_time
-        @eval $(Symbol("$NatureOfTime")) = Simulation_Time  
-        global Scheduled_tasks_List
-        Scheduled_tasks_List = CompMIMIC_CS.MyScheduling(Simulation_Time, Scheduled_tasks_List)
-        if CompMIMIC_ISS.FunctionName !== nothing
-        CompMIMIC_ISS.call()
+        while Simulation_Time != End_time
+            @eval $(Symbol("$NatureOfTime")) = Simulation_Time  
+            global Scheduled_tasks_List
+            Scheduled_tasks_List = CompMIMIC_CS.MyScheduling(Simulation_Time, Scheduled_tasks_List)
+            # if CompMIMIC_ISS.FunctionName !== nothing
+                CompMIMIC_ISS.call()
+            # end
+            #------
+            global Simulation_Time += Step_time
         end
-        #------
-        global Simulation_Time += Step_time
-    end
-    # Saving and writing the last simulation data
-    CompMIMIC_ISDR.call()
-    println("  ")
-    println("MIMIC tasks' completed ")
-    printstyled("============================"; color = :yellow)
-    println("  ")
+        # Saving and writing the last simulation data
+        CompMIMIC_ISDR.call()
+        println("  ")
+        println("MIMIC tasks' completed ")
+        printstyled("============================"; color = :yellow)
+        println("  ")
 end
+
+
+function MIMICresult()
+    CompMIMIC_ISDR.call()
+end
+
 
 println("   ")
 println("End of simulation ")
 printstyled("============================"; color = :red)
 println("  ")
-
-
-
+    
+    
