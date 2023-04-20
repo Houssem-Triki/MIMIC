@@ -34,6 +34,6 @@ In Julia's REPL, you need to change the directory with the command `cd("C:/My/Ne
 Then, you can lanche the initialisation of your interaction with the following command `MIMICinit()`. You can check for the scheduled tasks to be executed by putting the following command: `Scheduled_tasks_List`.
 
 If you wish to simulate the coupling that you established, the command line you need to use is `MIMICmain(Scheduled_tasks_List)`.
-At the end of the simulation, you get the results in a CSV file, located in the derectory that you noted in the "MIMIC_UC.yml".
+At the end of the simulation, you get the results in a CSV file, located in the main derectory under the name  "Results_yyyy_mm_dd__HH_MM_SS.CSV".
 
 
