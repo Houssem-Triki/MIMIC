@@ -34,7 +34,6 @@ function MIMICmain(Scheduled_tasks_List)
             #------
             global Simulation_Time += Step_time
         end
-        CompMIMIC_ISDR.call()
         println("  ")
         println("MIMIC tasks' completed ")
         printstyled("============================"; color = :yellow)
@@ -42,8 +41,13 @@ function MIMICmain(Scheduled_tasks_List)
 end
 
 
+function MIMICresult(PathToResults)
+    CompMIMIC_ISDR.PersonalCall(PathToResults)
+end
+
+
 println("   ")
-println("End of tool initialisation, you can now use the commands of MIMIC")
+println("End of tool initialisation, you can now use the commands of MIMIC ")
 printstyled("============================"; color = :red)
 println("  ")
     

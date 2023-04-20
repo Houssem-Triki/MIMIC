@@ -14,7 +14,7 @@ UserModel:
   Name: MIMIC
   Version: 0.9
   Language: Julia
-  PathToFile: D:/Mes Donnees/Julia/MIMIC
+  PathToFile: /MIMIC
   Perfs: false
   Nature_of_Step:
     Nature: Day
@@ -24,10 +24,10 @@ UserModel:
   Variables:
     State_variables: [fruitsCohorts]
     Inputs: []
-    Myrefdir: D:/Mes Donnees/Julia/MIMIC/MIMIC.jl
+    Myrefdir: /MIMIC/MIMIC.jl
     Outputs: [fruitsCohorts]
   Interaction_Data:
-    Myrefdir: D:/Mes Donnees/Julia/MIMIC/MIMIC_UIM.jl
+    Myrefdir: /MIMIC_UIM.jl
     Language: julia
     Function:
       Call: MIMIC_system_stats
@@ -73,7 +73,7 @@ Model2:
     Step_offset: 1
   Variables:
     State_variables: [fruitsCohorts]
-    Inputs: D:/Mes Donnees/Julia/Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
+    Inputs: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
     Myrefdir: D:/Mes Donnees/Julia/cbb_model/Plant_fruits
     Outputs: [fruitsCohorts, validationFruits]
   Function: 
