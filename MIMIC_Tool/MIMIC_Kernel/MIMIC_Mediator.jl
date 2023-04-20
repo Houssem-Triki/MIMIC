@@ -332,18 +332,5 @@ CompMIMIC_ISDR.Arguments = eval(Symbol("StateVariable_$(name[1])"))
 CompMIMIC_ISDR.PathFile = (eval(Symbol("file_$(name[1])")))*Resultfile
 
 
-# output = []
-# number_simulations = 10
-# for i = 1:number_simulations
-#     l = [4, 5, 6, 7]
-#     print(l)
-#     for j = 1:length(l)
-#         push!(output, zeros(j)) # This converts the array to a DataVector
-#     end
-# end
-
-# resize!.(output, maximum(length, output))
-# DataFrame(output)
-
 
 
