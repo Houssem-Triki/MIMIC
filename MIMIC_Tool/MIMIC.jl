@@ -43,7 +43,7 @@ end
 
 
 println("   ")
-println("End of tool initialisation")
+println("End of tool initialisation, you can now use the commands of MIMIC")
 printstyled("============================"; color = :red)
 println("  ")
     
