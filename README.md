@@ -20,21 +20,29 @@ The following packages are needed to run the example of the interaction:
 - DataFrames (`Pkg.add("DataFrames")`)
 - Interpolations (`Pkg.add("Interpolations")`)
 
+installing all the packages with : `Pkg.add("CSV", "DataFrames", "Interpolations")`
 ## Installing MIMIC.jl
 [Download](https://github.com/Houssem-Triki/MIMIC/archive/refs/heads/main.zip) the Project and unzip it in your working folder.
-In Julia's REPL, you need to change the directory with the command `cd("C:/My/New/Working/Directory/MIMIC_Tool")` to the directory of MIMIC.jl. 
-Run the command `include("MIMIC.jl")` allows you to use MIMICs command. This will allow the initialisation of MIMIC in order to use the functions that it offers.
+
+In Julia's REPL, change the working directory with the command `cd("D:/MyWorkingFolder/MIMIC_Tool")` to your working folder. 
+
+(*Warning*: the command cd needs to be writen in the same synthax as the example, without special characters or spaces).
+
+Run then the command `include("MIMIC.jl")` in order to load MIMIC's code in Julia.
 
 ## Running the exemple
-
-
 launch the initialisation of your interaction with the command `MIMICinit()`. 
 launch the simulation by typing `MIMICmain(Scheduled_tasks_List)`.
 
 At the end of the simulation, you get the results in a CSV file, located in the main derectory under the name  "Results_yyyy_mm_dd__HH_MM_SS.CSV".
-## Creating tour own interaction
+
+
+## Creating your own interaction 
 Interactions in MIMIC are generated from the users’ instructions, covering the following two aspects: 1) the interaction code itself written by the user and so called UIM (User interaction Model) 2) the control of the simulation so called UC (User simulation control). 
-This mean that you only need to edit the two files "MIMIC_UIM.jl" and "MIMIC_UC.yml" for coupling your models. (you can use a simple text editor or download a code editor like VScode, with the Julia addon [following this tutorial](https://code.visualstudio.com/docs/languages/julia) )
+This mean that you only need to edit the two files "MIMIC_UIM.jl" and "MIMIC_UC.yml" for coupling your models. (you can use a simple text editor or download a code editor like VScode, with the Julia addon [following this tutorial](https://code.visualstudio.com/docs/languages/julia) ).
+
+Once you defined your models and the nteraction in MIMIC_UC and MIMIC_UIM, initialise your interaction with `MIMICinit()`.
+You can check for the scheduled tasks to be executed by putting the following command: `Scheduled_tasks_List` before launching the simulation with `MIMICmain(Scheduled_tasks_List)`
 
 
 
