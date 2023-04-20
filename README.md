@@ -27,7 +27,7 @@ In Julia's REPL, you need to change the directory with the command `cd("C:/My/Ne
 
 ## Running the exemple
 
-The following command `include("MIMIC.jl")`. This will allow the initialisation of MIMIC in order to use the functions that it offers.
+The following command `include("MIMIC.jl")` allows you to use MIMICs command. This will allow the initialisation of MIMIC in order to use the functions that it offers.
 
 Then, you can lanche the initialisation of your interaction with the following command `MIMICinit()`. (You can check for the scheduled tasks to be executed by putting the following command: `Scheduled_tasks_List`.)
 
