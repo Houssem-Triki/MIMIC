@@ -28,14 +28,12 @@ function MIMICmain(Scheduled_tasks_List)
             @eval $(Symbol("$NatureOfTime")) = Simulation_Time  
             global Scheduled_tasks_List
             Scheduled_tasks_List = CompMIMIC_CS.MyScheduling(Simulation_Time, Scheduled_tasks_List)
-            # if CompMIMIC_ISS.FunctionName !== nothing
+            if CompMIMIC_ISS.FunctionName !== nothing
                 CompMIMIC_ISS.call()
-            # end
+            end
             #------
             global Simulation_Time += Step_time
         end
-        # Saving and writing the last simulation data
-        CompMIMIC_ISDR.call()
         println("  ")
         println("MIMIC tasks' completed ")
         printstyled("============================"; color = :yellow)
@@ -43,8 +41,8 @@ function MIMICmain(Scheduled_tasks_List)
 end
 
 
-function MIMICresult()
-    CompMIMIC_ISDR.call()
+function MIMICresult(PathToResults)
+    CompMIMIC_ISDR.PersonalCall(PathToResults)
 end
 
 

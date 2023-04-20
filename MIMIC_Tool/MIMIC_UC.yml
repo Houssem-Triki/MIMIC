@@ -41,7 +41,7 @@ Model1:
   Name:
   Version: 1.0
   language: CSV
-  PathToFile: D:/Mes Donnees/Julia/Interaction_CBB_Fruits_Human/Climate_model/Climate_module.jl
+  PathToFile: /Interaction_CBB_Fruits_Human/Climate_model/Climate_module.jl
   Perfs: false
   Nature_of_Step: 
     Nature: Day
@@ -51,7 +51,7 @@ Model1:
   Variables:
     State_variables: [temperature, humidity, rain]
     Inputs: 
-    Myrefdir: D:/Mes Donnees/Julia/cbb_model/Climat_data
+    Myrefdir: /Interaction_CBB_Fruits_Human/Climat_data
     Outputs: [environment]
   Function: 
       Call: 
@@ -64,7 +64,7 @@ Model2:
   Name: Coffee_tree
   Version: 0.9
   language: Julia
-  PathToFile: D:/Mes Donnees/Julia/Interaction_CBB_Fruits_Human/Fruit_model/Plant_Fruit_Dev.jl
+  PathToFile: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_Fruit_Dev.jl
   Perfs: false
   Nature_of_Step: 
     Nature: Day
@@ -78,7 +78,7 @@ Model2:
     Outputs: [fruitsCohorts, validationFruits]
   Function: 
     Call: FruitInitialisation
-    Arguments: D:/Mes Donnees/Julia/Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
+    Arguments: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
     File: true
 # Type
  
@@ -89,7 +89,7 @@ Model3:
   Name: CBB
   Version: 0.9
   language: Julia
-  PathToFile: D:/Mes Donnees/Julia/Interaction_CBB_Fruits_Human/cbb_model/CBB_main.jl
+  PathToFile: /Interaction_CBB_Fruits_Human/cbb_model/CBB_main.jl
   Perfs: false
   Nature_of_Step: 
     Nature: Day
@@ -105,7 +105,6 @@ Model3:
     Call: CBB
     Arguments: Day
     File: false
-
 #------------------------------------------------ Human -----------------------------------------------------------
 
 Model4: 
@@ -113,7 +112,7 @@ Model4:
   Name: Human
   Version: 1
   language: Julia
-  PathToFile: D:/Mes Donnees/Julia/Interaction_CBB_Fruits_Human/Human_model/Human_intervention.jl
+  PathToFile: /Interaction_CBB_Fruits_Human/Human_model/Human_intervention.jl
   Perfs: false
   Nature_of_Step: 
     Nature: Day

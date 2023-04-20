@@ -146,6 +146,7 @@ mutable struct MIMIC_ISDR <: ComposMother
     Arguments::Any
     ArgValue::Any
     call::Function
+    PersonalCall::Function
     PathFile::Any
     Performance::Bool
     function MIMIC_ISDR()
@@ -161,6 +162,18 @@ mutable struct MIMIC_ISDR <: ComposMother
             updateISDR()
             global FuncArg = self.ArgValue
             global FuncArg2 = self.PathFile
+            if self.Performance == true
+                @timeit to "ISDR" results(FuncArg..., FuncArg2)
+            else
+                results(FuncArg..., FuncArg2)
+            end
+        end
+        self.PersonalCall = function (Path)
+            updateISDR()
+            dt = now();
+            dt = Dates.format(dt, "yyyy_mm_dd__HH_MM_SS") ;
+            global FuncArg = self.ArgValue;
+            global FuncArg2 = Path * "\\Result_" * dt * ".CSV";
             if self.Performance == true
                 @timeit to "ISDR" results(FuncArg..., FuncArg2)
             else
@@ -274,7 +287,7 @@ for i in 1:NumberOfModels
         (@eval $(Symbol("Model_$(name[i])"))).IsFileOrNot = (eval(Symbol("isFile_$(name[i])"))) 
     end
     if isdefined(Main, Symbol(eval("file_$(name[i])")))
-        (@eval $(Symbol("Model_$(name[i])"))).PathFile = (eval(Symbol("file_$(name[i])")))
+        (@eval $(Symbol("Model_$(name[i])"))).PathFile = Directory_Main * (eval(Symbol("file_$(name[i])")))
         if @eval $(Symbol("Model_$(name[i])")).NameOfModel != name[1]
             include(@eval $(Symbol("Model_$(name[i])")).PathFile)
         end
@@ -326,11 +339,24 @@ end
 
 dt = now();
 dt = Dates.format(dt, "yyyy_mm_dd__HH_MM_SS") 
-Resultfile = "/Result_" * dt * ".CSV"
+Resultfile = "\\Result_" * dt * ".CSV"
 CompMIMIC_ISDR.NameOfComponent = "Interaction State & Data Recorder"
 CompMIMIC_ISDR.Arguments = eval(Symbol("StateVariable_$(name[1])")) 
 CompMIMIC_ISDR.PathFile = (eval(Symbol("file_$(name[1])")))*Resultfile
 
+
+# output = []
+# number_simulations = 10
+# for i = 1:number_simulations
+#     l = [4, 5, 6, 7]
+#     print(l)
+#     for j = 1:length(l)
+#         push!(output, zeros(j)) # This converts the array to a DataVector
+#     end
+# end
+
+# resize!.(output, maximum(length, output))
+# DataFrame(output)
 
 
 

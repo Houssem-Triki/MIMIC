@@ -68,7 +68,7 @@ function ArgumentValueExtraction(ModelName)
     if (@eval $(Symbol("Model_$ModelName"))).Arguments !== nothing && (@eval $(Symbol("Model_$ModelName"))).IsFileOrNot == false
         (@eval $(Symbol("Model_$ModelName"))).ArgValue = (eval(Meta.parse((@eval $(Symbol("Model_$ModelName"))).Arguments)))
     elseif (@eval $(Symbol("Model_$ModelName"))).Arguments !== nothing && (@eval $(Symbol("Model_$ModelName"))).IsFileOrNot == true
-        (@eval $(Symbol("Model_$ModelName"))).ArgValue = tuple((@eval $(Symbol("Model_$ModelName"))).Arguments)
+        (@eval $(Symbol("Model_$ModelName"))).ArgValue = tuple(Directory_Main * (@eval $(Symbol("Model_$ModelName"))).Arguments)
     end
 end
 

@@ -10,13 +10,10 @@
 ### MIMIC_Results.jl is the results satup code of the interaction platform
 
 function results(StateVariable, filepath)
+    df = DataFrame(StateVariable);
+    CSV.write(filepath, df ,delim=';');
     println(" Your results are saved in --> ", filepath)
-    df = DataFrame(StateVariable)
-    CSV.write(filepath, df ,delim=';')
-    
     # println(StateVariable)
-
-
 end
 
 
