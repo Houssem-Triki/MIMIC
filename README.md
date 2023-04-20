@@ -23,18 +23,15 @@ The following packages are needed to run the example of the interaction:
 ## Installing MIMIC.jl
 [Download](https://github.com/Houssem-Triki/MIMIC/archive/refs/heads/main.zip) the Project and unzip it in your working folder.
 In Julia's REPL, you need to change the directory with the command `cd("C:/My/New/Working/Directory/MIMIC_Tool")` to the directory of MIMIC.jl. 
-
+Run the command `include("MIMIC.jl")` allows you to use MIMICs command. This will allow the initialisation of MIMIC in order to use the functions that it offers.
 
 ## Running the exemple
 
-The following command `include("MIMIC.jl")` allows you to use MIMICs command. This will allow the initialisation of MIMIC in order to use the functions that it offers.
 
-Then, you can lanche the initialisation of your interaction with the following command `MIMICinit()`. (You can check for the scheduled tasks to be executed by putting the following command: `Scheduled_tasks_List`.)
+launch the initialisation of your interaction with the command `MIMICinit()`. 
+launch the simulation by typing `MIMICmain(Scheduled_tasks_List)`.
 
-If you wish to simulate the coupling that you established, the command line you need to use is `MIMICmain(Scheduled_tasks_List)`.
 At the end of the simulation, you get the results in a CSV file, located in the main derectory under the name  "Results_yyyy_mm_dd__HH_MM_SS.CSV".
-
-
 ## Creating tour own interaction
 Interactions in MIMIC are generated from the users’ instructions, covering the following two aspects: 1) the interaction code itself written by the user and so called UIM (User interaction Model) 2) the control of the simulation so called UC (User simulation control). 
 This mean that you only need to edit the two files "MIMIC_UIM.jl" and "MIMIC_UC.yml" for coupling your models. (you can use a simple text editor or download a code editor like VScode, with the Julia addon [following this tutorial](https://code.visualstudio.com/docs/languages/julia) )
