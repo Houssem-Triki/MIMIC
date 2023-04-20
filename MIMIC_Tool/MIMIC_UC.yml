@@ -103,7 +103,7 @@ Model3:
     Outputs: [fruitsOfInterest, AG, AR]
   Function:
     Call: CBB
-    Arguments: Day, environment
+    Arguments: Day
     File: false
 
 #------------------------------------------------ Human -----------------------------------------------------------
