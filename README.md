@@ -1,4 +1,4 @@
-# MIMIC v 0.9   20023 April 21th
+# MIMIC v 0.9 
 
 Mediation Interface for Model Inner Coupling
 
