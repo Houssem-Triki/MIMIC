@@ -49,8 +49,13 @@ Interactions in MIMIC are generated from the users’ instructions, covering the
 This mean that you can edit the two files "MIMIC_UIM.jl" for the interaction code and "MIMIC_UC.yml" for your models codes. 
 You can use a simple text editor or download a code editor like VScode, with the Julia addon [following this tutorial](https://code.visualstudio.com/docs/languages/julia) .
 
-Once you defined your models and the interaction codes in MIMIC_UC and MIMIC_UIM, proceed as explicited on the example: Initialise first your application with `MIMICinit()`.
-You can check for the scheduled tasks to be executed by putting the following command: `Scheduled_tasks_List` . Then launch the simulation with `MIMICmain(Scheduled_tasks_List)`
+Once you defined your models and the interaction codes in MIMIC_UC and MIMIC_UIM, proceed as explicited on the example: 
+
+Initialise first your application with `MIMICinit()`.
+You can check for the scheduled tasks to be executed by putting the following command: `Scheduled_tasks_List` . 
+
+Then launch the simulation with `MIMICmain(Scheduled_tasks_List)`
+
 
 
 Readme.ml v0.9 2023/04/21
