@@ -20,23 +20,10 @@ include(Directory_Kernel * "/MIMIC_Mediator.jl");
 include(Directory_Kernel * "/MIMIC_Scheduling.jl");
 include(Directory_Kernel * "/MIMIC_ISDR.jl");
 
-# (platformFruitsCohorts, validationFruits) = FruitInitialisation(Model_Coffee_tree.Arguments);
-
 println("  ")
 println("Initialisation completed")
 printstyled("============================"; color = :cyan)
 println("  ")
 
-
-# mapreduce(permutedims, hcat, CompMIMIC_ISDR.ArgValue[1])
-# reduce(vcat, CompMIMIC_ISDR.ArgValue[1])
-# v = Vector{Any}(nothing, length(CompMIMIC_ISDR.ArgValue[1]))
-
-# for i in eachindex(CompMIMIC_ISDR.ArgValue)
-#     v = hcat(v, CompMIMIC_ISDR.ArgValue[i])
-# end
-# v = v[:,2:end]
-# v = reduce(vcat,v)
-# d = DataFrame(v, :auto)
 
 
