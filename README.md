@@ -13,7 +13,10 @@ In order to use this tool, you need to download Julia REPL v 1.8.5 at least. [Ju
 Once installed, launch Julia. You need first to install the dependencies. 
 Type `using Pkg` command in Julia REPL to installing the packages.
 
-You can installing all the MIMIC requested packages with : `Pkg.add("YAML", "OrderedCollections", "TimerOutputs", "CSV", "DataFrames", "Interpolations")`
+
+You can installing all the MIMIC requested packages typing :
+
+`Pkg.add("YAML", "OrderedCollections", "TimerOutputs", "CSV", "DataFrames", "Interpolations")`
 
 In case of failure, retry package per package using the following command lines to install MIMIC's dependencies:
 - YAML (write `Pkg.add("YAML")` in Julia's REPL)
@@ -41,9 +44,7 @@ At the end of the simulation, results are available in a CSV file, located in th
 
 ## Creating your own interaction 
 Interactions in MIMIC are generated from the users’ instructions, covering the following two aspects: 
-
 1) the interaction code itself written by the user and so called UIM (User interaction Model) 
- 
 2) the control of the simulation so called UC (User simulation control). 
 
 This mean that you can edit the two files "MIMIC_UIM.jl" for the interaction code and "MIMIC_UC.yml" for your models codes. 
@@ -53,9 +54,8 @@ Once you defined your models and the interaction codes in MIMIC_UC and MIMIC_UIM
 
 Initialise first your application with `MIMICinit()`.
 You can check for the scheduled tasks to be executed by putting the following command: `Scheduled_tasks_List` . 
-
 Then launch the simulation with `MIMICmain(Scheduled_tasks_List)`
 
 
 
-Readme.ml v0.9 2023/04/21
+*Readme.ml v0.9 2023/04/21*
