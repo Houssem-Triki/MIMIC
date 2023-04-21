@@ -81,7 +81,7 @@ function TaskExecution(Time_cycle, Scheduled_tasks_List)
             (@eval $(Symbol("Model_$MName"))).CurrentCycle = Time_cycle
             ArgumentValueExtraction(MName)
             if (@eval $(Symbol("Model_$MName"))).FunctionName !== :nothing 
-                (@eval $(Symbol("Model_$MName"))).call()
+            (@eval $(Symbol("Model_$MName"))).Outputs = (@eval $(Symbol("Model_$MName"))).call()
             end
             tasks_desk_list = TaskListCreation(eval(Symbol("Model_$MName")), Time_cycle)
             tasks_desk_list = ListOrdering(tasks_desk_list)

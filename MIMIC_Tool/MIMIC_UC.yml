@@ -22,10 +22,10 @@ UserModel:
     End_Simulation: 355
     Step_offset: 1
   Variables:
-    State_variables: [fruitsCohorts]
+    State_variables: [Harvest]
     Inputs: []
     Myrefdir: /MIMIC/MIMIC.jl
-    Outputs: [fruitsCohorts]
+    Outputs: [Harvest]
   Interaction_Data:
     Myrefdir: /MIMIC_UIM.jl
     Language: julia
@@ -75,7 +75,7 @@ Model2:
     State_variables: [fruitsCohorts]
     Inputs: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
     Myrefdir: D:/Mes Donnees/Julia/cbb_model/Plant_fruits
-    Outputs: [fruitsCohorts, validationFruits]
+    Outputs: [fruitsCohorts, sumatraFruits]
   Function: 
     Call: FruitInitialisation
     Arguments: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
@@ -98,7 +98,7 @@ Model3:
     Step_offset: 1
   Variables:
     State_variables: [fruitsOfInterest, scolyteGroup, AG, AR]
-    Inputs: [Day, environment]
+    Inputs: [Day]
     Myrefdir: 
     Outputs: [fruitsOfInterest, AG, AR]
   Function:
@@ -120,13 +120,13 @@ Model4:
     End_Simulation: 355
     Step_offset: 1
   Variables:
-    State_variables: [fruitsCohorts, HarvestHealthy; HarvestColonized; GreenHealthy; GreenColonized]
-    Inputs: [fruitsCohorts, Simulation_Time,  sumatraFruits]
+    State_variables: [fruitsCohorts, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized]
+    Inputs: [fruitsCohorts, Simulation_Time,  "./Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv"]
     Myrefdir:
-    Outputs: [fruitsCohorts, HarvestHealthy; HarvestColonized; GreenHealthy; GreenColonized]
+    Outputs: [fruitsCohorts, Harvest]
   Function:
     Call: Human_Intervention_Harvest
-    Arguments: fruitsCohorts, Day,  sumatraFruits
+    Arguments: fruitsCohorts, Day, "./Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv"
     File: false
 
 #-----------------------------------------------------------------------------------------------------------------

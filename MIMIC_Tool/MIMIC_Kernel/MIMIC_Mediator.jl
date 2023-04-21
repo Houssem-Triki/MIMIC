@@ -55,6 +55,7 @@ mutable struct ModelConstructor <: ComposMother
     FunctionName::Symbol
     Arguments::Any
     ArgValue::Any
+    Outputs::Any
     IsFileOrNot::Any
     call::Function
     status::String
@@ -101,6 +102,7 @@ mutable struct MIMIC_ISS <: ComposMother
     NameOfComponent::String
     Arguments::Any
     ArgValue::Any
+    Outputs::Any
     IsFileOrNot::Any
     FunctionName::Symbol
     call::Function
@@ -145,6 +147,7 @@ mutable struct MIMIC_ISDR <: ComposMother
     NameOfComponent::String
     Arguments::Any
     ArgValue::Any
+    Outputs::Any
     call::Function
     PersonalCall::Function
     PathFile::Any
@@ -165,7 +168,7 @@ mutable struct MIMIC_ISDR <: ComposMother
             if self.Performance == true
                 @timeit to "ISDR" results(FuncArg..., FuncArg2)
             else
-                results(FuncArg..., FuncArg2)
+                results(FuncArg, FuncArg2)
             end
         end
         self.PersonalCall = function (Path)
@@ -194,6 +197,7 @@ mutable struct MIMIC_CS <: ComposMother
     NameOfComponent::String
     Arguments::Any
     ArgValue::Any
+    Outputs::Any
     call::Function
     PathFile::Any
     Performance::Bool
@@ -279,6 +283,9 @@ for i in 1:NumberOfModels
     if isdefined(Main, Symbol(eval("StateVariable_$(name[i])")))   
         (@eval $(Symbol("Model_$(name[i])"))).state_variables = eval(Symbol("StateVariable_$(name[i])")) 
     end
+    if isdefined(Main, Symbol(eval("outputs_$(name[i])")))   
+        (@eval $(Symbol("Model_$(name[i])"))).Outputs = eval(Symbol("outputs_$(name[i])")) 
+    end
     if isdefined(Main, Symbol(eval("callSynthax_$(name[i])")))
         (@eval $(Symbol("Model_$(name[i])"))).FunctionName = Symbol(eval(Symbol("callSynthax_$(name[i])")))          
     end
@@ -342,7 +349,7 @@ dt = Dates.format(dt, "yyyy_mm_dd__HH_MM_SS")
 Resultfile = "\\Result_" * dt * ".CSV"
 CompMIMIC_ISDR.NameOfComponent = "Interaction State & Data Recorder"
 CompMIMIC_ISDR.Arguments = eval(Symbol("StateVariable_$(name[1])")) 
-CompMIMIC_ISDR.PathFile = (eval(Symbol("file_$(name[1])")))*Resultfile
+CompMIMIC_ISDR.PathFile = Directory_Main * Resultfile
 
 
 # output = []

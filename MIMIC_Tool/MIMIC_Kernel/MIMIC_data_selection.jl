@@ -145,6 +145,7 @@ for i in eachindex(name)
         @eval $(Symbol("StateVariable_$(name[i])")) = variablesModels[index_v].StateVariables
         @eval $(Symbol("datafile_$(name[i])")) = variablesModels[index_v].DataFile
         @eval $(Symbol("inputs_$(name[i])")) = variablesModels[index_v].Inputs
+        @eval $(Symbol("outputs_$(name[i])")) = variablesModels[index_v].Outputs
         index_v += 1 
     end
     if name[i] == functionModels[index_f].NameOfModel

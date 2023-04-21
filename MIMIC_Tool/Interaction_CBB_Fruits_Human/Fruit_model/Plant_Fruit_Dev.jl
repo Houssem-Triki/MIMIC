@@ -32,12 +32,14 @@ function FruitInitialisation(Tree_File)
     #Fruits
     StudiedFruits = SumatraFruits[1:end,:]
     sumatraFruits = Matrix(StudiedFruits)
+    # println(sumatraFruits)
     if Threads.atomic_xchg!(isfirstinitialisation.fruitinit, false)
         fruitsCohorts = FruitsCohortcreation(sumatraFruits)
         # validationFruits = ValidationData(Tree_File)
     else
         fruitsCohorts = CohortsAging()
     end
+    
     return fruitsCohorts, sumatraFruits
 end
 

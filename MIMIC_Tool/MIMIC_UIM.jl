@@ -10,6 +10,7 @@
 #----------------------------------------------------------------------------------------------------------
 function MIMIC_system_stats(fruitsCohorts, fruitsOfInterest, AR, AG, day)
     #--- Fruit management           (cohort managment - Translation : fruitsCohorts ---> fruitsOInterest)
+    # println(AR,"   " ,AG)
     while AR > 0 && AG > 0
         for i in eachindex(fruitsCohorts)
             # Red attack

@@ -10,19 +10,25 @@
 ### Human harvest model
 # using DataFrames
 # using CSV
-
 HarvestHealthy = []
 HarvestColonized = []
 GreenHealthy = []
 GreenColonized = []
+Harvest = []
+push!(Harvest,["HarvestDay" "HarvestHealthy" "HarvestColonized" "GreenHealthy" "GreenColonized"])
+push!(HarvestHealthy,["HarvestHealthy" "HarvestDay"])
+push!(HarvestColonized,["HarvestColonized" "HarvestDay"])
+push!(GreenHealthy,["GreenHealthy" "HarvestDay"])
+push!(GreenColonized,["GreenColonized" "HarvestDay"])
 
-function Human_Intervention_Harvest(fruitsCohorts, hday, sumatraFruits)
+function Human_Intervention_Harvest(fruitsCohorts, hday, Tree_File)
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
-    # SumatraFruits = CSV.read(Tree_File, DataFrame);
-    # #Fruits
-    # StudiedFruits = SumatraFruits[1:end,:]
-    # sumatraFruits = Matrix(StudiedFruits)
+    SumatraFruits = CSV.read(Tree_File, DataFrame);
+    #Fruits
+    StudiedFruits = SumatraFruits[1:end,:]
+    sumatraFruits = Matrix(StudiedFruits)
     #--- Harvest
+    # println("suqsfqsfqsfqsfqsf")
     TotHarvestHealthy = 0 ;
     TotHarvestColonized = 0 ;
     TotHarvestHealthyG = 0 ;
@@ -42,11 +48,14 @@ function Human_Intervention_Harvest(fruitsCohorts, hday, sumatraFruits)
                 TotHarvestColonizedG += fruitsCohorts[i].NumberOfOrgans 
             end
         end
-        push!(HarvestHealthy,[TotHarvestHealthy hday])
-        push!(HarvestColonized,[TotHarvestColonized hday])
-        push!(GreenHealthy,[TotHarvestHealthyG hday])
-        push!(GreenColonized,[TotHarvestColonizedG hday])
+        push!(Harvest,[hday TotHarvestHealthy TotHarvestColonized TotHarvestHealthyG TotHarvestColonizedG])
+        # push!(HarvestHealthy,[TotHarvestHealthy hday])
+        # push!(HarvestColonized,[TotHarvestColonized hday])
+        # push!(GreenHealthy,[TotHarvestHealthyG hday])
+        # push!(GreenColonized,[TotHarvestColonizedG hday])
+        # println(HarvestHealthy)
         # end
     end
-    return fruitsCohorts, HarvestHealthy; HarvestColonized; GreenHealthy; GreenColonized
+    
+    return fruitsCohorts, Harvest
 end
