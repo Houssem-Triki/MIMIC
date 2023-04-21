@@ -26,7 +26,8 @@ In case of failure, retry package per package using the following command lines 
 - DataFrames (`Pkg.add("DataFrames")`)
 - Interpolations (`Pkg.add("Interpolations")`)
 
-
+ 
+ 
 ## Installing MIMIC.jl
 [Download](https://github.com/Houssem-Triki/MIMIC/archive/refs/heads/main.zip) the Project and unzip it in your working folder.
 
@@ -34,15 +35,18 @@ In Julia's REPL, change the working directory with the command `cd("D:/MyWorking
 (*Warning*: the command cd needs to be writen in the same synthax as the example, without special characters or spaces).
 
 Run then the command `include("MIMIC.jl")` in order to load MIMIC's code in Julia.
-
+ 
+ 
 ## Running the example
 Launch the initialisation with the command `MIMICinit()`. 
 Launch the simulation by typing `MIMICmain(Scheduled_tasks_List)`.
 
 At the end of the simulation, results are available in a CSV file, located in the working directory under the name  "Results_yyyy_mm_dd__HH_MM_SS.CSV".
 
-
+ 
+ 
 ## Creating your own interaction 
+
 Interactions in MIMIC are generated from the users’ instructions, covering the following two aspects: 
 1) the interaction code itself written by the user and so called UIM (User interaction Model) 
 2) the control of the simulation so called UC (User simulation control). 
@@ -53,9 +57,11 @@ You can use a simple text editor or download a code editor like VScode, with the
 Once you defined your models and the interaction codes in MIMIC_UC and MIMIC_UIM, proceed as explicited on the example: 
 
 Initialise first your application with `MIMICinit()`.
+
 You can check for the scheduled tasks to be executed by putting the following command: `Scheduled_tasks_List` . 
+
 Then launch the simulation with `MIMICmain(Scheduled_tasks_List)`
 
 
 
-[^1]: *Readme.ml v0.9 2023/04/21*
+*Readme.ml v0.9 2023/04/21*
