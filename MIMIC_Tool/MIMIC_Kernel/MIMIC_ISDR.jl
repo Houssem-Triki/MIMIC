@@ -11,7 +11,6 @@
 
 function results(StateVariable, filepath)
     FOutputs = Vector{Any}(nothing, length(StateVariable[1]))
-    println(StateVariable)
     for i in eachindex(StateVariable)
         FOutputs = hcat(FOutputs, StateVariable[i])
     end
