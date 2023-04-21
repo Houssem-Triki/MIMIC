@@ -32,7 +32,7 @@ function MIMICmain(Scheduled_tasks_List)
             #------
             global Simulation_Time += Step_time
         end
-        # CompMIMIC_ISDR.call()
+        CompMIMIC_ISDR.call()
         println("  ")
         println("MIMIC tasks' completed ")
         printstyled("============================"; color = :yellow)
@@ -40,44 +40,11 @@ function MIMICmain(Scheduled_tasks_List)
 end
 
 
-MIMICinit()
-
-MIMICmain(Scheduled_tasks_List)
-
-CompMIMIC_ISDR.call()
-# paths = "D:/Thèse/Results"
-# function MIMICresult(PathToResults)
-#     CompMIMIC_ISDR.PersonalCall(PathToResults)
-# end
-
-# MIMICresult(paths)
 println("   ")
 println("End of tool initialisation, you can now use the commands of MIMIC ")
 printstyled("============================"; color = :red)
 println("  ")
-    
-# length(CompMIMIC_ISDR.Arguments)
 
 
 
-
-
-
-
-# name = []
-# push!(name, "dada1")
-# push!(name, "dada2")
-
-# val = rand(Int, 2,3)
-# FOutputs = []
-
-# Space1 = Vector{Any}(undef, length(name))
-
-# for i in eachindex(name)
-#     hcat(FOutputs, name[i])
-
-#     hcat(FOutputs, Space1)
-
-
-# end
 
