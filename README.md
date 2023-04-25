@@ -17,10 +17,11 @@ Type `using Pkg` command in Julia REPL to installing the packages.
 
 You can installing all the MIMIC requested packages typing :
 
-`Pkg.add(["YAML", "OrderedCollections", "TimerOutputs", "CSV", "DataFrames", "Interpolations"])`
+`Pkg.add(["YAML", "Plots", "OrderedCollections", "TimerOutputs", "CSV", "DataFrames", "Interpolations"])`
 
 In case of failure, retry package per package using the following command lines to install MIMIC's dependencies:
 - YAML (write `Pkg.add("YAML")` in Julia's REPL)
+- Plots (`Pkg.add("Plots")`)
 - OrderedCollections (`Pkg.add("OrderedCollections")`)
 - TimerOutputs (`Pkg.add("TimerOutputs")`)
 - CSV (`Pkg.add("CSV")`)
