@@ -6,6 +6,7 @@
 # Main Author: Houssem E.M TRIKI CIRAD-PHIM/AMAP
 # Co authors: Marc Jaeger, Fabienne Rebeyre
 # Created: June 2022
+# MIMIC Version 0.9
 ##############################################################
 ### MIMIC.jl is the main code for the interaction platform
 #----------------------------------------------------------------------------------------------------------
@@ -14,15 +15,12 @@ Directory_Main = @__DIR__
 Data provided by the user (UC & UIM) are treated and used to initialise the coupling.
 the initialisation results in an ordered list of the tasks to be executed
 =#
-
 function MIMICinit()
     include(Directory_Main * "/MIMIC_Kernel/MIMICComp.jl");
 end
-
 #= Main function of MIMIC coupling
     Scheduled_tasks_List: results from the initialisation (MIMICinit), it holds the liste and order of executing the tasks
 =#
-
 function MIMICmain(Scheduled_tasks_List)
         while Simulation_Time != End_time + 1
             @eval $(Symbol("$NatureOfTime")) = Simulation_Time  
@@ -33,18 +31,16 @@ function MIMICmain(Scheduled_tasks_List)
             global Simulation_Time += Step_time
         end
         CompMIMIC_ISDR.call()
+        CSVtoPlot()
         println("  ")
         println("MIMIC tasks' completed ")
         printstyled("============================"; color = :yellow)
         println("  ")
 end
 
-
 println("   ")
-println("End of tool initialisation, you can now use the commands of MIMIC ")
+println("End of tool initialisation, you can now use the commands of MIMIC:")  
+println("MIMICinit() for initialisation and MIMICmain(Scheduled_tasks_List) for lanching the simulation)")
 printstyled("============================"; color = :red)
 println("  ")
-
-
-
-
+CSVtoPlot()

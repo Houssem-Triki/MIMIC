@@ -165,10 +165,11 @@ mutable struct MIMIC_ISDR <: ComposMother
             updateISDR()
             global FuncArg = self.ArgValue
             global FuncArg2 = self.PathFile
+            global FuncArg3 = self.Arguments
             if self.Performance == true
-                @timeit to "ISDR" results(FuncArg..., FuncArg2)
+                @timeit to "ISDR" results(FuncArg, FuncArg2, FuncArg3)
             else
-                results(FuncArg, FuncArg2)
+                results(FuncArg, FuncArg2, FuncArg3)
             end
         end
         self.PersonalCall = function (Path)
@@ -178,9 +179,9 @@ mutable struct MIMIC_ISDR <: ComposMother
             global FuncArg = self.ArgValue;
             global FuncArg2 = Path * "\\Result_" * dt * ".CSV";
             if self.Performance == true
-                @timeit to "ISDR" results(FuncArg..., FuncArg2)
+                @timeit to "ISDR" results(FuncArg, FuncArg2)
             else
-                results(FuncArg..., FuncArg2)
+                results(FuncArg, FuncArg2)
             end
         end
         return self
@@ -349,21 +350,7 @@ dt = Dates.format(dt, "yyyy_mm_dd__HH_MM_SS")
 Resultfile = "\\Result_" * dt * ".CSV"
 CompMIMIC_ISDR.NameOfComponent = "Interaction State & Data Recorder"
 CompMIMIC_ISDR.Arguments = eval(Symbol("StateVariable_$(name[1])")) 
-CompMIMIC_ISDR.PathFile = Directory_Main * Resultfile
-
-
-# output = []
-# number_simulations = 10
-# for i = 1:number_simulations
-#     l = [4, 5, 6, 7]
-#     print(l)
-#     for j = 1:length(l)
-#         push!(output, zeros(j)) # This converts the array to a DataVector
-#     end
-# end
-
-# resize!.(output, maximum(length, output))
-# DataFrame(output)
+CompMIMIC_ISDR.PathFile = Directory_Results * Resultfile
 
 
 

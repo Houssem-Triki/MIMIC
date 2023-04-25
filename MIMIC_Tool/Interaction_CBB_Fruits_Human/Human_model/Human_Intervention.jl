@@ -14,12 +14,8 @@ HarvestHealthy = []
 HarvestColonized = []
 GreenHealthy = []
 GreenColonized = []
-Harvest = []
-push!(Harvest,["HarvestDay" "HarvestHealthy" "HarvestColonized" "GreenHealthy" "GreenColonized"])
-push!(HarvestHealthy,["HarvestHealthy" "HarvestDay"])
-push!(HarvestColonized,["HarvestColonized" "HarvestDay"])
-push!(GreenHealthy,["GreenHealthy" "HarvestDay"])
-push!(GreenColonized,["GreenColonized" "HarvestDay"])
+harvest_day = []
+
 
 function Human_Intervention_Harvest(fruitsCohorts, hday, Tree_File)
     #-------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -48,14 +44,15 @@ function Human_Intervention_Harvest(fruitsCohorts, hday, Tree_File)
                 TotHarvestColonizedG += fruitsCohorts[i].NumberOfOrgans 
             end
         end
-        push!(Harvest,[hday TotHarvestHealthy TotHarvestColonized TotHarvestHealthyG TotHarvestColonizedG])
-        # push!(HarvestHealthy,[TotHarvestHealthy hday])
-        # push!(HarvestColonized,[TotHarvestColonized hday])
-        # push!(GreenHealthy,[TotHarvestHealthyG hday])
-        # push!(GreenColonized,[TotHarvestColonizedG hday])
+        # push!(Harvest,[hday TotHarvestHealthy TotHarvestColonized TotHarvestHealthyG TotHarvestColonizedG])
+        push!(HarvestHealthy,TotHarvestHealthy)
+        push!(HarvestColonized,TotHarvestColonized)
+        push!(GreenHealthy,TotHarvestHealthyG)
+        push!(GreenColonized,TotHarvestColonizedG)
+        push!(harvest_day, hday)
         # println(HarvestHealthy)
-        # end
+
     end
-    
-    return fruitsCohorts, Harvest
+    return fruitsCohorts, harvest_day, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized
+    # return fruitsCohorts, Harvest
 end

@@ -22,10 +22,10 @@ UserModel:
     End_Simulation: 355
     Step_offset: 1
   Variables:
-    State_variables: [Harvest]
+    State_variables: [harvest_day, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized]
     Inputs: []
     Myrefdir: /MIMIC/MIMIC.jl
-    Outputs: [Harvest]
+    Outputs: [harvest_day, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized]
   Interaction_Data:
     Myrefdir: /MIMIC_UIM.jl
     Language: julia
@@ -34,11 +34,12 @@ UserModel:
       Arguments: fruitsCohorts, fruitsOfInterest, AR, AG, Simulation_Time
       File: false
       Output: fruitsCohorts, fruitsOfInterest
+    
 
 #-------------------------------------------------Climate----------------------------------------------------------
 Model1: 
   Is_model_active: true
-  Name:
+  Name: Climate
   Version: 1.0
   language: CSV
   PathToFile: /Interaction_CBB_Fruits_Human/Climate_model/Climate_module.jl
@@ -123,7 +124,7 @@ Model4:
     State_variables: [fruitsCohorts, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized]
     Inputs: [fruitsCohorts, Simulation_Time,  "./Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv"]
     Myrefdir:
-    Outputs: [fruitsCohorts, Harvest]
+    Outputs: [fruitsCohorts, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized]
   Function:
     Call: Human_Intervention_Harvest
     Arguments: fruitsCohorts, Day, "./Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv"

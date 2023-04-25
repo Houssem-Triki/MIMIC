@@ -9,28 +9,27 @@
 ##############################################################
 ### MIMIC_Results.jl is the results satup code of the interaction platform
 
-function results(StateVariable, filepath)
-    FOutputs = Vector{Any}(nothing, length(StateVariable[1]))
-    for i in eachindex(StateVariable)
-        FOutputs = hcat(FOutputs, StateVariable[i])
-    end
-    FOutputs = FOutputs[:, 2:end]
-    FOutputs = reduce(vcat, FOutputs)
-    df = DataFrame(FOutputs, :auto);
+
+
+
+
+
+function results(StateVariable, filepath, SVnames)
+    df = DataFrame(StateVariable, SVnames)
     CSV.write(filepath, df ,delim=';');
     println(" Your results are saved in --> ", filepath)    
 end
 
 
-function ISDR_Management(outputs)
-    # Space = Vector{Any}(undef, length(argumentsName))
-    # for i in eachindex(argumentsName)
-    #     hcat(FOutputs, argumentsName)
+# function ISDR_Management(outputs)
+#     # Space = Vector{Any}(undef, length(argumentsName))
+#     # for i in eachindex(argumentsName)
+#     #     hcat(FOutputs, argumentsName)
     
-    #     hcat(FOutputs, Space)
+#     #     hcat(FOutputs, Space)
     
-    # push!(FOutputs, argumentsName)
-end
+#     # push!(FOutputs, argumentsName)
+# end
 
 # function resul(HarvestHealthy, validationFruits, HarvestColonized, GreenHealthy, GreenColonized)
 #     HH = []
@@ -60,7 +59,7 @@ end
 
 
 function CSVtoPlot()
-    resultsdf0 = CSV.read("D:/Thèse/Results\\Test_C52.csv", DataFrame);
+    resultsdf0 = CSV.read(CompMIMIC_ISDR.PathFile, DataFrame);
     Resultsdf0 = resultsdf0[1:end,2:end]
     results = Matrix(Resultsdf0)
     labels = names(Resultsdf0)
