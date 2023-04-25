@@ -36,9 +36,7 @@ function FruitInitialisation(Tree_File)
     if Threads.atomic_xchg!(isfirstinitialisation.fruitinit, false)
         fruitsCohorts = FruitsCohortcreation(sumatraFruits)
         # validationFruits = ValidationData(Tree_File)
-    else
-        fruitsCohorts = CohortsAging()
-    end
+    fruitsCohorts = CohortsAging()
     
     return fruitsCohorts, sumatraFruits
 end
