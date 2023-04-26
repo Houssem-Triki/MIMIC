@@ -42,7 +42,7 @@ Issued from soumission to Plant Phenomics, this example concerns CBB attacks on 
 Launch the initialisation with the command `MIMICinit()`. 
 Launch the simulation by typing `MIMICmain(Scheduled_tasks_List)`.
 
-At the end of the simulation, besides the graph, the full results are available in a CSV file, located in the working directory under the name  "Results_yyyy_mm_dd__HH_MM_SS.CSV".
+At the end of the simulation, besides the graph, the full results are available in a CSV file, located in the MIMIC-main/MIMIC_Toll/MIMIC_Results directory under the name  "Results_yyyy_mm_dd__HH_MM_SS.CSV".
 
 
 ## Creating your own interaction 
