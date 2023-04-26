@@ -23,15 +23,16 @@ end
 =#
 function MIMICmain(Scheduled_tasks_List)
         while Simulation_Time != End_time + 1
-            @eval $(Symbol("$NatureOfTime")) = Simulation_Time  
+            @eval $(Symbol("$NatureOfTime")) = Simulation_Time 
             global Scheduled_tasks_List
+
             Scheduled_tasks_List = CompMIMIC_CS.MyScheduling(Simulation_Time, Scheduled_tasks_List)
-            CompMIMIC_ISS.call()
+            CompMIMIC_ISS.call() 
             #------
             global Simulation_Time += Step_time
         end
         CompMIMIC_ISDR.call()
-        CSVtoPlot()
+        CSVtoPlot(Model_Coffee_tree.Outputs[2])
         println("  ")
         println("MIMIC tasks' completed ")
         printstyled("============================"; color = :yellow)

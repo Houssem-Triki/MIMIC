@@ -4,7 +4,7 @@
 # and the DeSira project in Uganda.
 #
 # Main Author: Houssem E.M TRIKI CIRAD-PHIM/AMAP
-# Co authors: Marc Jaeger, Fabienne Rebeyre
+#
 # Created: June 2022
 ##############################################################
 ### CBB_dynamics contains all the population dynamics that are used in the CBB model

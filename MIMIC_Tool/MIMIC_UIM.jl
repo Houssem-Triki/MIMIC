@@ -11,6 +11,26 @@
 function MIMIC_system_stats(fruitsCohorts, fruitsOfInterest, AR, AG, day)
     #--- Fruit management           (cohort managment - Translation : fruitsCohorts ---> fruitsOInterest)
     # println(AR,"   " ,AG)
+    
+    FruitsRH = 0 ;
+    FruitsRA = 0 ;             
+    FruitsGH = 0 ;
+    FruitsGA = 0 ;
+    for i in eachindex(fruitsCohorts)
+        fruitsCohorts[i].ChronologicalAge += 1 ;
+        if fruitsCohorts[i].State == false && fruitsCohorts[i].ChronologicalAge >= 196
+            FruitsRH += fruitsCohorts[i].NumberOfOrgans
+        elseif fruitsCohorts[i].State == true && fruitsCohorts[i].ChronologicalAge >= 196
+            FruitsRA += fruitsCohorts[i].NumberOfOrgans
+        end
+        if fruitsCohorts[i].State == false && fruitsCohorts[i].ChronologicalAge >= 105 && fruitsCohorts[i].ChronologicalAge < 196
+            FruitsGH += fruitsCohorts[i].NumberOfOrgans
+        elseif fruitsCohorts[i].State == true && fruitsCohorts[i].ChronologicalAge >= 105 && fruitsCohorts[i].ChronologicalAge < 196
+            FruitsGA += fruitsCohorts[i].NumberOfOrgans
+        end
+        push!(fruitsOfInterest, FruitsOfInterest([FruitsRH, FruitsGH, 0],[FruitsRA, FruitsGA, 0])) ;   
+    end
+    
     while AR > 0 && AG > 0
         for i in eachindex(fruitsCohorts)
             # Red attack
@@ -38,28 +58,8 @@ function MIMIC_system_stats(fruitsCohorts, fruitsOfInterest, AR, AG, day)
         end
         break
     end
-
-    FruitsRH = 0 ;
-    FruitsRA = 0 ;             
-    FruitsGH = 0 ;
-    FruitsGA = 0 ;
-    for i in eachindex(fruitsCohorts)
-        if fruitsCohorts[i].State == false && fruitsCohorts[i].ChronologicalAge >= 196
-            FruitsRH += fruitsCohorts[i].NumberOfOrgans
-        elseif fruitsCohorts[i].State == true && fruitsCohorts[i].ChronologicalAge >= 196
-            FruitsRA += fruitsCohorts[i].NumberOfOrgans
-        end
-        if fruitsCohorts[i].State == false && fruitsCohorts[i].ChronologicalAge >= 105 && fruitsCohorts[i].ChronologicalAge < 196
-            FruitsGH += fruitsCohorts[i].NumberOfOrgans
-        elseif fruitsCohorts[i].State == true && fruitsCohorts[i].ChronologicalAge >= 105 && fruitsCohorts[i].ChronologicalAge < 196
-            FruitsGA += fruitsCohorts[i].NumberOfOrgans
-        end
-    end
-    # Translation
-    if FruitsRH != 0 || FruitsGH != 0 || FruitsRA != 0 || FruitsGA != 0
-        push!(fruitsOfInterest, FruitsOfInterest([FruitsRH, FruitsGH, 0],[FruitsRA, FruitsGA, 0])) ;   
-    end
-
+    
+    
     return fruitsOfInterest, fruitsCohorts, AR, AG
 end
 

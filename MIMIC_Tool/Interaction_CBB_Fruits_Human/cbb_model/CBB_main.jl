@@ -4,7 +4,7 @@
 # and the DeSira project in Uganda.
 #
 # Main Author: Houssem E.M TRIKI CIRAD-PHIM/AMAP
-# Co authors: Marc Jaeger, Fabienne Rebeyre
+#
 # Created: June 2022
 ##############################################################
 ### CBB_main.jl is the main code for the scolyte model
@@ -12,14 +12,12 @@
 using CSV
 using DataFrames
 using Interpolations
-Directory_CBB = @__DIR__
-include(Directory_CBB * "/CBB_Comp.jl")
+include("CBB_Comp.jl")
 AR = 0;
 AG = 0;
 #----------- for stand alone execution 
-
-
 function CBB(day)
+
     if day == 1
         for i in eachindex(fruitsCohorts)
             if fruitsCohorts[i].State == true
@@ -34,7 +32,7 @@ function CBB(day)
     global AR = 0;
     global AG = 0;
     
-    # MIMIC_system_stats_to_CBB(fruitsCohorts, fruitsOfInterest)  # Gets fruitsofInterest 
+    # Platform_system_stats_to_CBB(fruitsCohorts, fruitsOfInterest)  # Gets fruitsofInterest 
     
     #--- New Groupe of CBB               
     global scolyteGroup = New_egg(scolyteGroup, day)
@@ -48,7 +46,7 @@ function CBB(day)
     #--- Colonisation
     (scolyteGroup, AR, AG) = CBB_colonisation(scolyteGroup, day) 
     
-    # MIMIC_system_stats_to_Plant(fruitsCohorts, AR, AG, day)  # Gets fruitsCohorts
+    # Platform_system_stats_to_Plant(fruitsCohorts, AR, AG, day)  # Gets fruitsCohorts
     
     # end
     # return  fruitsCohorts; fruitsOfInterest;

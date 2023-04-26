@@ -23,6 +23,7 @@ end
 isfirstinitialisation = Isfirstinitialisation(Threads.Atomic{Bool}(true))
 fruitsCohorts = []
 sumatraFruits = []
+AgingInit = false
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 function FruitInitialisation(Tree_File)
@@ -33,11 +34,15 @@ function FruitInitialisation(Tree_File)
     StudiedFruits = SumatraFruits[1:end,:]
     sumatraFruits = Matrix(StudiedFruits)
     # println(sumatraFruits)
-    if Threads.atomic_xchg!(isfirstinitialisation.fruitinit, false)
+    # if Threads.atomic_xchg!(isfirstinitialisation.fruitinit, false)
         fruitsCohorts = FruitsCohortcreation(sumatraFruits)
-        # validationFruits = ValidationData(Tree_File)
-    fruitsCohorts = CohortsAging()
-    
+    # end
+    # if AgingInit == true
+    #     # println("heyyyy")
+    #     fruitsCohorts = CohortsAging()
+    # end
+    # global AgingInit = true
+    # global fruitsCohorts
     return fruitsCohorts, sumatraFruits
 end
 

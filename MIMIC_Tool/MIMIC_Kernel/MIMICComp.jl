@@ -24,7 +24,7 @@ include(Directory_Kernel * "/MIMIC_data_selection.jl");
 include(Directory_Kernel * "/MIMIC_Mediator.jl");
 include(Directory_Kernel * "/MIMIC_Scheduling.jl");
 include(Directory_Kernel * "/MIMIC_ISDR.jl");
-
+# (fruitsCohorts, sumatraFruits) = Model_Coffee_tree.call
 
 println("  ")
 println("Initialisation completed")

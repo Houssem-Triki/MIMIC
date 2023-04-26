@@ -25,9 +25,9 @@ end
 #     # Space = Vector{Any}(undef, length(argumentsName))
 #     # for i in eachindex(argumentsName)
 #     #     hcat(FOutputs, argumentsName)
-    
+
 #     #     hcat(FOutputs, Space)
-    
+
 #     # push!(FOutputs, argumentsName)
 # end
 
@@ -58,23 +58,22 @@ end
 # end
 
 
-function CSVtoPlot()
-    resultsdf0 = CSV.read(CompMIMIC_ISDR.PathFile, DataFrame);
-    Resultsdf0 = resultsdf0[1:end,2:end]
-    results = Matrix(Resultsdf0)
-    labels = names(Resultsdf0)
+function CSVtoPlot(Validation)
+    resultsdf0 = CSV.read(CompMIMIC_ISDR.PathFile, DataFrame)
+    XR = resultsdf0[1:end,2:end]
+    XR1 = XR[1:end,1] + XR[1:end,2]
+    XR2 = XR[1:end,2]
+    YR = resultsdf0[1:end,1]
+    XR3 = Validation[1:end,4]
+    labels = names(resultsdf0[1:end,2:end])
     labels = reshape(labels, 1, :)
-    aaaa = plot(results, lab = labels)
-    display(plot(aaaa))
+    plot(YR, XR1, label = "Total Fruits\n", seriestype = :bar, color = :lightgrey);
+    plot!(YR, XR2, lw = 3, label = "Colonized Simulated\n", color = :blue)
+    title!("\nTotal and colonized fruits on tree C22")
+    xlabel!("$NatureOfTime\n")
+    ylabel!("\nNumber of fruits")
+    display(plot!(YR, XR3, lw = 3, seriestype = :scatter, color = :red, label = "Colonized Measured"))
 end
-
-
-
-
-
-
-
-
 
 
 

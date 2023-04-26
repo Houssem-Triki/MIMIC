@@ -1,29 +1,15 @@
-##############################################################
-#   This code is part of the Phd Thesis "Interactions between pest attacks and plant growth
-# using a model approach applied to robusta coffee in Uganda. Effects on production"
-# and the DeSira project in Uganda.
-#
-# Main Author: Houssem E.M TRIKI CIRAD-PHIM/AMAP
-# Co authors: Marc Jaeger, Fabienne Rebeyre
-# Created: June 2022
-##############################################################
-### Compiling the needed data for execution
-#------------------------------------------------------------------------------------------------------------------------------------------------------
-
 #----------- for stand alone execution 
 # include("Climate_module.jl")
 # include("Plant_Fruit_Dev.jl")
 # using .PlantFruit
-# include("MIMIC_SystemStats.jl")    
+# include("Platform_SystemStats.jl")    
 
 #-----------
-include(Directory_CBB * "/CBB_dynamics.jl");
-include(Directory_CBB * "/CBB_Func_Laws.jl");
-include(Directory_CBB * "/CBB_init.jl");
-include(Directory_CBB * "/CBB_attack.jl")
-include(Directory_CBB * "/CBB_attack_rest.jl");
-
-# include("Climate_module.jl")
+include("CBB_dynamics.jl");
+include("CBB_Func_Laws.jl");
+include("CBB_init.jl");
+include("CBB_attack.jl")
+include("./CBB_attack_rest.jl");
 # using .Climate_data
 #-----------
 # FruitInitialisation()

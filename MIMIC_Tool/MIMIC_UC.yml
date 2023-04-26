@@ -22,7 +22,7 @@ UserModel:
     End_Simulation: 355
     Step_offset: 1
   Variables:
-    State_variables: [harvest_day, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized]
+    State_variables: [harvest_day, HarvestHealthy, HarvestColonized]
     Inputs: []
     Myrefdir: /MIMIC/MIMIC.jl
     Outputs: [harvest_day, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized]
@@ -70,7 +70,7 @@ Model2:
   Nature_of_Step: 
     Nature: Day
     Unit_step_size: 1
-    End_Simulation: 355
+    End_Simulation: 1
     Step_offset: 1
   Variables:
     State_variables: [fruitsCohorts]
@@ -83,7 +83,6 @@ Model2:
     File: true
 # Type
  
-
 #------------------------------------------------- CBB ---------------------------------------------------------
 Model3: 
   Is_model_active: true
@@ -106,6 +105,7 @@ Model3:
     Call: CBB
     Arguments: Day
     File: false
+
 #------------------------------------------------ Human -----------------------------------------------------------
 
 Model4: 
@@ -117,8 +117,8 @@ Model4:
   Perfs: false
   Nature_of_Step: 
     Nature: Day
-    Unit_step_size: 2
-    End_Simulation: 355
+    Unit_step_size: 1
+    End_Simulation: 354
     Step_offset: 1
   Variables:
     State_variables: [fruitsCohorts, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized]
