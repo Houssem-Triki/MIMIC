@@ -32,12 +32,12 @@ In case of failure, retry package per package using the following command lines 
 ## Installing MIMIC.jl
 [Download](https://github.com/Houssem-Triki/MIMIC/archive/refs/heads/main.zip) the Project and unzip it in your working folder.
 
-In Julia's REPL, change the working directory with the command `cd("D:/MyWorkingFolder/MIMIC_Tool")` to your working folder. 
+In Julia's REPL, change the working directory with the command `cd("D:/MyWorkingFolder/MIMIC-main/MIMIC_Tool")` to your working folder. 
 (*Warning*: the command cd needs to be writen in the same synthax as the example, without special characters or spaces).
 
 Run then the command `include("MIMIC.jl")` in order to load MIMIC's code in Julia.
 
-## Running the example
+## Running the example (issued from publication soumission to Plant Phenomics on Tree C22 data)
 Launch the initialisation with the command `MIMICinit()`. 
 Launch the simulation by typing `MIMICmain(Scheduled_tasks_List)`.
 
@@ -58,5 +58,7 @@ Initialise first your application with `MIMICinit()`.
 You can check for the scheduled tasks to be executed by putting the following command: `Scheduled_tasks_List` . 
 Then launch the simulation with `MIMICmain(Scheduled_tasks_List)`
 
+## Reference
+To com, submitted to Plant Phenomics, currently under review
 
 [^1]: *Readme.ml v0.9 2023/04/21*
