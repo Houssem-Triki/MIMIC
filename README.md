@@ -37,11 +37,12 @@ In Julia's REPL, change the working directory with the command `cd("D:/MyWorking
 
 Run then the command `include("MIMIC.jl")` in order to load MIMIC's code in Julia.
 
-## Running the example (issued from publication soumission to Plant Phenomics on Tree C22 data)
+## Running the example
+Issued from soumission to Plant Phenomics, this example concerns CBB attacks on coffea berries. The Tree C22 data is illustrated here.
 Launch the initialisation with the command `MIMICinit()`. 
 Launch the simulation by typing `MIMICmain(Scheduled_tasks_List)`.
 
-At the end of the simulation, results are available in a CSV file, located in the working directory under the name  "Results_yyyy_mm_dd__HH_MM_SS.CSV".
+At the end of the simulation, besides the graph, the full results are available in a CSV file, located in the working directory under the name  "Results_yyyy_mm_dd__HH_MM_SS.CSV".
 
 
 ## Creating your own interaction 
