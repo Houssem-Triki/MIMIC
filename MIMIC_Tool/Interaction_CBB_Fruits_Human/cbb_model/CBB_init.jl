@@ -90,46 +90,12 @@ scolyteGroup = []
 fruitsOfInterest = []
 Colony = 0;
 FirstCBB = 0;
-# push!(scolyteGroup, ScolyteGroup(1, 0, 0, vie_sco(environment.temperature[1]), 0, 0, 0, 0)) ;
-# Colony  = scolyteGroup[1].population; 
 Colonizer = Array{Float64}(undef, 0, 2)
 
 
-# AR = 0;
-# AG = 0;
-#---------------------------------------------------------------------------
-# #                        A revoir 
 
-#---------------------------------------------------------------------------
-# ------------------------------Temporaire
-# # Field data
-# SumatraFruits = CSV.read("cbb_model/Plant_fruits/Sumatra_Fruits_C52.csv", DataFrame);
-# #Fruits
-# StudiedFruits = SumatraFruits[1:end,:]
-# sumatraFruits = Matrix(StudiedFruits)
 
-# #-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-# isfirstcall = Isfirstcall(Threads.Atomic{Bool}(true), Threads.Atomic{Bool}(true), Threads.Atomic{Bool}(true), Threads.Atomic{Bool}(true), Threads.Atomic{Bool}(true)) ;
-
-#----------------------------------------------------------Variables Initialisation-------------------------------------------------------------------
-# fruitsOfInterest = [] 
-# newfruitsOfInterest = []
-# scolyteGroup = [] ;
-# FPop = []
-# Colonizer = Array{Float64}(undef, 0, 2)
-# AR = 0
-# AG = 0
-# #-------------------------------------------------------------Initial Conditions----------------------------------------------------------------------
-# #--- For the CBB
-# push!(scolyteGroup, ScolyteGroup(sumatraFruits[1,4], sumatraFruits[1,5], 0, vie_sco(environment.temperature[1]), 0, 0, 0, 0)) ;
-# Colony  = scolyteGroup[1].population ;
-
-# #--- For the Tree results
-# HarvestHealthy = []
-# HarvestColonized = []
-# GreenHealthy = []
-# GreenColonized = []
 
 
 

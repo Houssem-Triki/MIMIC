@@ -50,6 +50,7 @@ mutable struct PerformancesModels
     NameOfModel::String
     performances::Bool
 end
+
 performancesModels = []
 
 mutable struct UIMParsing
@@ -62,8 +63,9 @@ end
 UIMparsing = []
 #-------------------------------------------------------------------------------------------------------------------------------------
 #------ Counting active models and creating variables for models ------
-a = [] # First key of the input.yml groups
+Firstkey = [] # First key of the input.yml groups
 name = [] # the name given to models
+ActingModels = [] # the name of outside (to MIMIC) models
 for (key,value) in data
     if data["$key"]["Is_model_active"] == true
         @eval $(Symbol("$key")) = nothing
@@ -72,39 +74,40 @@ for (key,value) in data
         elseif get(data["$key"], "Name", "NoValue") === nothing
             push!(name, "$key")
         end
-        push!(a, "$key") 
+        push!(Firstkey, "$key") 
     end
     name
 end
-NumberOfModels = length(a)
+NumberOfModels = length(Firstkey)
+ActingModels = name[2:end]
 
 #----- Extracting time, variables, function call and file path data from each model
-for i in eachindex(a)
-    if getkey(data[a[i]], "Nature_of_Step", false ) == "Nature_of_Step"
-        @eval $(Symbol("times_$(name[i])")) = copy(data[a[$i]]["Nature_of_Step"])
+for i in eachindex(Firstkey)
+    if getkey(data[Firstkey[i]], "Nature_of_Step", false ) == "Nature_of_Step"
+        @eval $(Symbol("times_$(name[i])")) = copy(data[Firstkey[$i]]["Nature_of_Step"])
         push!(stepTimeModel, StepTimeModel(name[i], (@eval $(Symbol("times_$(name[i])"))["Step_offset"]), (@eval $(Symbol("times_$(name[i])"))["Unit_step_size"]), (@eval $(Symbol("times_$(name[i])"))["End_Simulation"])))
     end
-    if getkey(data[a[i]], "Variables", false ) == "Variables"
-        @eval $(Symbol("variables_$(name[i])")) = copy(data[a[$i]]["Variables"])
+    if getkey(data[Firstkey[i]], "Variables", false ) == "Variables"
+        @eval $(Symbol("variables_$(name[i])")) = copy(data[Firstkey[$i]]["Variables"])
         push!(variablesModels, VariablesModels(name[i], (@eval $(Symbol("variables_$(name[i])"))["State_variables"]), (@eval $(Symbol("variables_$(name[i])"))["Inputs"]), (@eval $(Symbol("variables_$(name[i])"))["Myrefdir"]),(@eval $(Symbol("variables_$(name[i])"))["Outputs"])))
     end
-    if getkey(data[a[i]], "Function", false ) == "Function" && data[a[i]]["Function"]["Call"] !== nothing
-        @eval $(Symbol("functions_$(name[i])")) = copy(data[a[$i]]["Function"])
+    if getkey(data[Firstkey[i]], "Function", false ) == "Function" && data[Firstkey[i]]["Function"]["Call"] !== nothing
+        @eval $(Symbol("functions_$(name[i])")) = copy(data[Firstkey[$i]]["Function"])
         push!(functionModels, FunctionModels(name[i], (@eval $(Symbol("functions_$(name[i])"))["Call"]), (@eval $(Symbol("functions_$(name[i])"))["Arguments"]), (@eval $(Symbol("functions_$(name[i])"))["File"])))
     else
         push!(functionModels, FunctionModels(name[i], nothing, nothing, nothing))
     end
-    if getkey(data[a[i]], "PathToFile", false ) == "PathToFile"
-        if typeof(data[a[i]]["PathToFile"]) == String
-            @eval $(Symbol("paths_$(name[i])")) = data[a[$i]]["PathToFile"]
+    if getkey(data[Firstkey[i]], "PathToFile", false ) == "PathToFile"
+        if typeof(data[Firstkey[i]]["PathToFile"]) == String
+            @eval $(Symbol("paths_$(name[i])")) = data[Firstkey[$i]]["PathToFile"]
             push!(pathModels, PathModels(name[i], (@eval $(Symbol("paths_$(name[i])")))))
         else
-            @eval $(Symbol("paths_$(name[i])")) = copy(data[a[$i]]["PathToFile"])   # NE COPIE PAS LES "STRING" !!!!!!
+            @eval $(Symbol("paths_$(name[i])")) = copy(data[Firstkey[$i]]["PathToFile"])   # NE COPIE PAS LES "STRING" !!!!!!
             push!(pathModels, PathModels(name[i], (@eval $(Symbol("paths_$(name[i])")))))
         end
     end
-    if getkey(data[a[i]], "Perfs", false) == "Perfs"
-        @eval $(Symbol("Perfs_$(name[i])")) = data[a[$i]]["Perfs"]
+    if getkey(data[Firstkey[i]], "Perfs", false) == "Perfs"
+        @eval $(Symbol("Perfs_$(name[i])")) = data[Firstkey[$i]]["Perfs"]
         push!(performancesModels, PerformancesModels(name[i], (@eval $(Symbol("Perfs_$(name[i])")))))
     else
         push!(performancesModels, PerformancesModels(name[i], (false)))
@@ -165,9 +168,9 @@ for i in eachindex(name)
 end
 
 #----- UIM parsing
-if getkey(data[a[1]]["Interaction_Data"], "Function", false ) == "Function" && data[a[1]]["Interaction_Data"]["Function"]["Call"] !== nothing
-    @eval $(Symbol("functions_UIM")) = copy(data[a[$1]]["Interaction_Data"]["Function"])
-    push!(UIMparsing, UIMParsing("UIMCode", (@eval $(Symbol("functions_UIM"))["Call"]), (@eval $(Symbol("functions_UIM"))["Arguments"]), (@eval $(Symbol("functions_UIM"))["File"]), Directory_Main * data[a[1]]["Interaction_Data"]["Myrefdir"]))
+if getkey(data[Firstkey[1]]["Interaction_Data"], "Function", false ) == "Function" && data[Firstkey[1]]["Interaction_Data"]["Function"]["Call"] !== nothing
+    @eval $(Symbol("functions_UIM")) = copy(data[Firstkey[$1]]["Interaction_Data"]["Function"])
+    push!(UIMparsing, UIMParsing("UIMCode", (@eval $(Symbol("functions_UIM"))["Call"]), (@eval $(Symbol("functions_UIM"))["Arguments"]), (@eval $(Symbol("functions_UIM"))["File"]), Directory_Main * data[Firstkey[1]]["Interaction_Data"]["Myrefdir"]))
 else
     push!(UIMparsing, UIMParsing("UIMCode", nothing, nothing, nothing, nothing))
 end

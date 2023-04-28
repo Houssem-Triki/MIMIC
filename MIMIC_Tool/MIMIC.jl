@@ -22,23 +22,22 @@ end
     Scheduled_tasks_List: results from the initialisation (MIMICinit), it holds the liste and order of executing the tasks
 =#
 function MIMICmain(Scheduled_tasks_List)
-        while Simulation_Time != End_time + 1
+        while Simulation_Time != End_time 
             @eval $(Symbol("$NatureOfTime")) = Simulation_Time 
             global Scheduled_tasks_List
-
             Scheduled_tasks_List = CompMIMIC_CS.MyScheduling(Simulation_Time, Scheduled_tasks_List)
-            CompMIMIC_ISS.call() 
             #------
             global Simulation_Time += Step_time
         end
         CompMIMIC_ISDR.call()
+        # This function was added for ploting the interaction (CBB) example, by reading the CSV result file
         CSVtoPlot(Model_Coffee_tree.Outputs[2])
+        #
         println("  ")
         println("MIMIC tasks' completed ")
         printstyled("============================"; color = :yellow)
         println("  ")
 end
-
 println("   ")
 println("End of tool initialisation, you can now use the commands of MIMIC:")  
 println("MIMICinit() for initialisation and MIMICmain(Scheduled_tasks_List) for lanching the simulation)")

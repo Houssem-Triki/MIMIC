@@ -13,7 +13,7 @@ using CSV
 
 mutable struct FruitsCohorts
     NumberOfOrgans::Int32
-    ChronologicalAge::Int64
+    ChronologicalAge::Float64
     State::Bool
     DateOfColonisation::Any
 end
@@ -23,7 +23,7 @@ end
 isfirstinitialisation = Isfirstinitialisation(Threads.Atomic{Bool}(true))
 fruitsCohorts = []
 sumatraFruits = []
-AgingInit = false
+
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------
 function FruitInitialisation(Tree_File)
@@ -34,15 +34,15 @@ function FruitInitialisation(Tree_File)
     StudiedFruits = SumatraFruits[1:end,:]
     sumatraFruits = Matrix(StudiedFruits)
     # println(sumatraFruits)
-    # if Threads.atomic_xchg!(isfirstinitialisation.fruitinit, false)
+    if Threads.atomic_xchg!(isfirstinitialisation.fruitinit, false)
         fruitsCohorts = FruitsCohortcreation(sumatraFruits)
-    # end
-    # if AgingInit == true
+    end
+    # if AgingInit == 
     #     # println("heyyyy")
-    #     fruitsCohorts = CohortsAging()
+    fruitsCohorts = CohortsAging()
     # end
-    # global AgingInit = true
-    # global fruitsCohorts
+    # global AgingInit += 1
+    global fruitsCohorts
     return fruitsCohorts, sumatraFruits
 end
 

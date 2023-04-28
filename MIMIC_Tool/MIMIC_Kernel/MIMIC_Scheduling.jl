@@ -63,6 +63,17 @@ end
 # ST is the mediator schedul list
 Scheduled_tasks_List = SchedulingTasks(tasks_desk_list)
 
+#----------------------------------------------------- Tasks status
+
+function TasksStatus(ModelName)
+    (@eval $(Symbol("Model_$ModelName"))).status = "Executed"
+    CompMIMIC_ISS.modelTotranslate = ModelName
+    CompMIMIC_ISS.call()
+end
+
+
+
+
 #----------------------------------------------------- Task execution
 function ArgumentValueExtraction(ModelName)
     if (@eval $(Symbol("Model_$ModelName"))).Arguments !== nothing && (@eval $(Symbol("Model_$ModelName"))).IsFileOrNot == false
@@ -71,6 +82,7 @@ function ArgumentValueExtraction(ModelName)
         (@eval $(Symbol("Model_$ModelName"))).ArgValue = tuple(Directory_Main * (@eval $(Symbol("Model_$ModelName"))).Arguments)
     end
 end
+
 
 function TaskExecution(Time_cycle, Scheduled_tasks_List)
     aa = false
@@ -82,6 +94,7 @@ function TaskExecution(Time_cycle, Scheduled_tasks_List)
             ArgumentValueExtraction(MName)
             if (@eval $(Symbol("Model_$MName"))).FunctionName !== :nothing 
             (@eval $(Symbol("Model_$MName"))).Outputs = (@eval $(Symbol("Model_$MName"))).call()
+            TasksStatus(MName)
             end
             tasks_desk_list = TaskListCreation(eval(Symbol("Model_$MName")), Time_cycle)
             tasks_desk_list = ListOrdering(tasks_desk_list)
@@ -94,3 +107,11 @@ function TaskExecution(Time_cycle, Scheduled_tasks_List)
     end
     return Scheduled_tasks_List
 end
+
+
+
+
+
+
+
+

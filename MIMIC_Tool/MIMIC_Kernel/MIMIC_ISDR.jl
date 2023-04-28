@@ -69,13 +69,15 @@ function CSVtoPlot(Validation)
     labels = reshape(labels, 1, :)
     plot(YR, XR1, label = "Total Fruits\n", seriestype = :bar, color = :lightgrey);
     plot!(YR, XR2, lw = 3, label = "Colonized Simulated\n", color = :blue)
-    title!("\nTotal and colonized fruits on tree C22")
+    last(Model_Coffee_tree.Arguments)
+    treename = first(last(Model_Coffee_tree.Arguments, 7), 3)
+    title!("\nTotal and colonized fruits on tree $treename")
     xlabel!("$NatureOfTime\n")
     ylabel!("\nNumber of fruits")
     display(plot!(YR, XR3, lw = 3, seriestype = :scatter, color = :red, label = "Colonized Measured"))
 end
 
-
+first(last(Model_Coffee_tree.Arguments, 7), 3)
 
 
 

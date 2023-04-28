@@ -106,6 +106,7 @@ mutable struct MIMIC_ISS <: ComposMother
     IsFileOrNot::Any
     FunctionName::Symbol
     call::Function
+    modelTotranslate::String
     PathFile::Any
     Performance::Bool
     function MIMIC_ISS()
@@ -119,19 +120,20 @@ mutable struct MIMIC_ISS <: ComposMother
         end
         self.call = function ()
             FuncName = self.FunctionName
+            global modelname = self.modelTotranslate
             updateUIM()
             global FuncArg = self.ArgValue
             if self.Performance == true
                 if FuncArg === nothing
                     @timeit to "ISS" (@eval $FuncName())
                 else
-                    @timeit to "ISS" (@eval $FuncName(FuncArg...))
+                    @timeit to "ISS" (@eval $FuncName(FuncArg..., modelname))
                 end
             else
                 if FuncArg === nothing
                     @eval $FuncName()
                 else
-                    @eval $FuncName(FuncArg...)
+                    @eval $FuncName(FuncArg..., modelname)
                 end
             end
         end

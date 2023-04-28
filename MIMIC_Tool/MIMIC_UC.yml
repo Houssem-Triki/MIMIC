@@ -19,7 +19,7 @@ UserModel:
   Nature_of_Step:
     Nature: Day
     Unit_step_size: 1
-    End_Simulation: 355
+    End_Simulation: 354
     Step_offset: 1
   Variables:
     State_variables: [harvest_day, HarvestHealthy, HarvestColonized]
@@ -58,6 +58,7 @@ Model1:
       Call: 
       Arguments: 
       File: 
+ 
 
 #------------------------------------------------ Tree ---------------------------------------------------------
 Model2:
@@ -70,19 +71,19 @@ Model2:
   Nature_of_Step: 
     Nature: Day
     Unit_step_size: 1
-    End_Simulation: 1
+    End_Simulation: 354
     Step_offset: 1
   Variables:
     State_variables: [fruitsCohorts]
-    Inputs: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
+    Inputs: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C52.csv
     Myrefdir: D:/Mes Donnees/Julia/cbb_model/Plant_fruits
     Outputs: [fruitsCohorts, sumatraFruits]
   Function: 
     Call: FruitInitialisation
-    Arguments: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
+    Arguments: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C52.csv
     File: true
-# Type
- 
+
+
 #------------------------------------------------- CBB ---------------------------------------------------------
 Model3: 
   Is_model_active: true
@@ -94,7 +95,7 @@ Model3:
   Nature_of_Step: 
     Nature: Day
     Unit_step_size: 1
-    End_Simulation: 355
+    End_Simulation: 354
     Step_offset: 1
   Variables:
     State_variables: [fruitsOfInterest, scolyteGroup, AG, AR]
@@ -122,12 +123,12 @@ Model4:
     Step_offset: 1
   Variables:
     State_variables: [fruitsCohorts, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized]
-    Inputs: [fruitsCohorts, Simulation_Time,  "./Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv"]
+    Inputs: [fruitsCohorts, Simulation_Time,  "./Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C52.csv"]
     Myrefdir:
     Outputs: [fruitsCohorts, HarvestHealthy, HarvestColonized, GreenHealthy, GreenColonized]
   Function:
     Call: Human_Intervention_Harvest
-    Arguments: fruitsCohorts, Day, "./Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv"
+    Arguments: fruitsCohorts, Day, "./Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C52.csv"
     File: false
 
 #-----------------------------------------------------------------------------------------------------------------
