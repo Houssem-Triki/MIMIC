@@ -16,8 +16,6 @@ A model is defined by filling the following fields:
 | ***Function***   | **Call** | *** | 
 |    | **Arguments** | *** | 
 |    | **File** | true/false | 
-| ***Interaction Data***   | **MyRefDir** | *** | 
-|    | **Language** | *** | 
 
 # MIMIC_UIM
 Users write code in the Julia language that describes how the models interact with each other by using the state variables. But you don't have to use Julia to encode the UIM: i) the interaction code can also be an "external" model, which is part of the Model layer but has a higher level of complexity and worse performance because it needs to be wrapped in a pseudo-model. ii) If the interaction works with a low coupling level only on the existing models' direct inputs and outputs, this is called a "shared coupling." The user doesn't have to give any UIM. The simulation starts right from the initial schedule and runs based on the input and output definitions for implicit cycles that were given for the pseudo-model generation. 
@@ -29,7 +27,7 @@ However, there are some conditions on writting the UIM:
 
 Template of MIMIC_UIM:
 ``` Julia
-ModelsNames = ["Model1_name", Model3_name] 
+ModelsNames = ["Model1_name", "Model3_name"] 
 function MIMIC_system_stats(Model1_stateVariables..., Model3_stateVariables..., executedModel)
 # executedModel variable is meant to be kept as an input
   if executedModel == ModelsNames[1]
