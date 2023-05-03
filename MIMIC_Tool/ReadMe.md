@@ -19,7 +19,7 @@ A model is defined by filling the following fields:
 
 
 
-In the present example, two coffee tree data are available. You can switch between the two at the coffee tree model definition. as follow : 
+In the present example, two coffee tree data are available. You can switch between the two at the coffee tree model definition by switching between `Sumatra_Fruits_C22.csv` and `Sumatra_Fruits_C52.csv`, in the `Input` and `Arguments` fields. as follow : 
 ``` YAML
 Model2:
   Is_model_active: true
@@ -36,14 +36,15 @@ Model2:
   Variables:
     State_variables: [fruitsCohorts]
     Inputs: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
+    #Inputs: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C52.csv
     Myrefdir: D:/Mes Donnees/Julia/cbb_model/Plant_fruits
     Outputs: [fruitsCohorts, sumatraFruits]
   Function: 
     Call: FruitInitialisation
     Arguments: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
+    #Arguments: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C52.csv
     File: true
  ```
-
 
 
 # MIMIC_UIM
@@ -80,7 +81,7 @@ end
 
 # Using code written in another coding language
 In order to use a code written in other than Julia, you need to install in Julia the adequate package to run it. Julia support C, R, Matlab and python languages.
-- For R, the package name is   `RCall` 
-- For Python, `PyCall`
+- For R, the package name is   `RCall.jl` 
+- For Python, `PyCall.jl`
 - For Matlab, you can use `Matlab.jl`or `Mex.jl`
 - For C, the basic code of Julia integrate it with the `ccall`function. 
