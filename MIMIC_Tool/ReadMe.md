@@ -17,8 +17,42 @@ A model is defined by filling the following fields:
 |    | **Arguments** | *** | 
 |    | **File** | true/false | 
 
+
+
+In the present example, two coffee tree data are available. You can switch between the two at the coffee tree model definition. as follow : 
+``` YAML
+Model2:
+  Is_model_active: true
+  Name: Coffee_tree
+  Version: 0.9
+  language: Julia
+  PathToFile: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_Fruit_Dev.jl
+  Perfs: false
+  Nature_of_Step: 
+    Nature: Day
+    Unit_step_size: 1
+    End_Simulation: 354
+    Step_offset: 1
+  Variables:
+    State_variables: [fruitsCohorts]
+    Inputs: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
+    Myrefdir: D:/Mes Donnees/Julia/cbb_model/Plant_fruits
+    Outputs: [fruitsCohorts, sumatraFruits]
+  Function: 
+    Call: FruitInitialisation
+    Arguments: /Interaction_CBB_Fruits_Human/Fruit_model/Plant_fruits/Sumatra_Fruits_C22.csv
+    File: true
+ ```
+
+
+
 # MIMIC_UIM
 Users write code in the Julia language that describes how the models interact with each other by using the state variables. But you don't have to use Julia to encode the UIM: i) the interaction code can also be an "external" model, which is part of the Model layer but has a higher level of complexity and worse performance because it needs to be wrapped in a pseudo-model. ii) If the interaction works with a low coupling level only on the existing models' direct inputs and outputs, this is called a "shared coupling." The user doesn't have to give any UIM. The simulation starts right from the initial schedule and runs based on the input and output definitions for implicit cycles that were given for the pseudo-model generation. 
+
+
+
+
+
 
 However, there are some conditions on writting the UIM:
 - The interaction code needs to be written in a form of a function 
@@ -45,4 +79,8 @@ end
 
 
 # Using code written in another coding language
-In order to use a code written in other than Julia, you need to write a Julia code that contains the adequate package to run it. Julia support C, R, Matlab and python languages. 
+In order to use a code written in other than Julia, you need to install in Julia the adequate package to run it. Julia support C, R, Matlab and python languages.
+- For R, the package name is   `RCall` 
+- For Python, `PyCall`
+- For Matlab, you can use `Matlab.jl`or `Mex.jl`
+- For C, the basic code of Julia integrate it with the `ccall`function. 
