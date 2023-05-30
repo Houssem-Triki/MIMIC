@@ -63,5 +63,5 @@ Then launch the simulation with `MIMICmain(Scheduled_tasks_List)`
 To com, submitted to Plant Phenomics, currently under review
 
 [^1]: *Readme.ml v0.9 2023/04/21*
-[^2]: *PMA_Conference/Abstract_Triki.pdf Abstract of PMA2023 
-[^3]: *PMA_Conference/Pma_presentation.pdf Presentation of PMA2022
+[^2]: *References Abstract for PMA2022
+[^3]: *References Presentation for PMA2022
