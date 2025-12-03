@@ -70,7 +70,7 @@ mutable struct FruitsOfInterest <: TreeFruits
     PercentageAttackedVeryAppealing::Float64
     PercentageAttackedAppealing::Float64
     PercentageAttackedGround::Float64
-    function FruitsOfInterest(NumberOfFruitsAvailable, NumberOfFruitsAttacked)::Float64
+    function FruitsOfInterest(NumberOfFruitsAvailable, NumberOfFruitsAttacked)
         PercentageHealthyVeryAppealing = round(NumberOfFruitsAvailable[1] *100 / sum(NumberOfFruitsAvailable), digits = 2)
         PercentageHealthyAppealing = round(NumberOfFruitsAvailable[2] *100 / sum(NumberOfFruitsAvailable), digits = 2)
         PercentageHealthyGround = round(NumberOfFruitsAvailable[3] *100 / sum(NumberOfFruitsAvailable), digits = 2)
@@ -91,6 +91,7 @@ fruitsOfInterest = []
 Colony = 0;
 FirstCBB = 0;
 Colonizer = Array{Float64}(undef, 0, 2)
+
 
 
 
