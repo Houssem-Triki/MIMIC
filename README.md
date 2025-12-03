@@ -35,7 +35,7 @@ In case of failure, retry package per package using the following command lines 
 [Download](https://github.com/Houssem-Triki/MIMIC/archive/refs/heads/main.zip) the Project and unzip it in your working folder.
 
 In Julia's REPL, change the working directory with the command `cd("D:/MyWorkingFolder/MIMIC-main/MIMIC_Tool")` to your working folder. 
-(*Warning*: the command cd needs to be writen in the same synthax as the example, without special characters or spaces).
+(*Warning*: the command cd needs to be writen in the same synthax as the example, without special characters or spaces, use '/' and not '\' as directory delimiter).
 
 Run then the command `include("MIMIC.jl")` in order to load MIMIC's code in Julia.
 
