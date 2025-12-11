@@ -1,7 +1,8 @@
 # MIMIC v 0.9 [^1]
 
 Mediation Interface for Model Inner Coupling
-
+This version is the Demo for the Plant phenomics article.
+New releases are to be conducted in [Amap Git](http://amap.cirad.fr/)
 ## What is it?
 MIMIC is a coupling tool that let you connect models through their inputs and outputs.
 The fundamental assumption of the coupling is that each model operates and evaluates its own internal states in a finite amount of time, from one internal step to the next. MIMIC supervises the interaction through its own states and information, which are evaluated based on the information collected from the connected models.
